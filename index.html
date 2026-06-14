@@ -1,280 +1,84 @@
-<style>
-:root { --accent: #8B6914; --accent-light: #D4A843; --line: #C9A84C; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans, sans-serif); }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seconde Guerre Mondiale · Chronologie 1939–1945</title>
+  <meta name="description" content="Chronologie interactive de la Seconde Guerre Mondiale — événements officiels, méconnus et anecdotes, de 1939 à 1945." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-.tl-wrap { padding: 1.5rem 0.5rem; position: relative; }
-.tl-header { text-align: center; margin-bottom: 2.5rem; }
-.tl-title { font-size: 20px; font-weight: 500; color: var(--color-text-primary); letter-spacing: 0.04em; }
-.tl-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 6px; }
+  <!-- ══════════ HERO ══════════ -->
+  <header class="hero">
+    <p class="hero-eyebrow">Chronologie documentaire · 1939 – 1945</p>
+    <h1 class="hero-title">Seconde<br><em>Guerre Mondiale</em></h1>
+    <p class="hero-sub">
+      Événements officiels, faits méconnus et anecdotes oubliées —
+      de l'invasion de la Pologne à la capitulation japonaise.
+    </p>
+    <div class="hero-rule"></div>
 
-.filter-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem; }
-.filter-btn { font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); cursor: pointer; transition: all .15s; }
-.filter-btn.active, .filter-btn:hover { background: var(--color-background-secondary); color: var(--color-text-primary); border-color: var(--color-border-primary); }
-.filter-btn.active { font-weight: 500; }
+    <!-- KPIs -->
+    <div class="kpi-bar">
+      <div class="kpi-item">
+        <div class="kpi-value" id="kpi-victims">—</div>
+        <div class="kpi-label">Victimes estimées</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-value" id="kpi-duration">—</div>
+        <div class="kpi-label">Durée du conflit</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-value" id="kpi-nations">—</div>
+        <div class="kpi-label">Nations impliquées</div>
+      </div>
+    </div>
+  </header>
 
-.tl-line-wrap { position: relative; padding-left: 48px; }
-.tl-spine { position: absolute; left: 20px; top: 0; bottom: 0; width: 1.5px; background: linear-gradient(to bottom, transparent, var(--color-border-secondary) 5%, var(--color-border-secondary) 95%, transparent); }
+  <!-- ══════════ FILTRES (sticky) ══════════ -->
+  <nav class="filters-wrap" aria-label="Filtres">
+    <div class="filters-inner">
+      <span class="filter-label">Filtrer</span>
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="known">📖 Histoire officielle</button>
+      <button class="filter-btn" data-filter="rare">🔍 Peu connu</button>
+      <button class="filter-btn" data-filter="anecdote">💡 Anecdote</button>
+      <span class="event-count" id="event-count"></span>
+    </div>
+  </nav>
 
-.tl-year-block { margin-bottom: 2.5rem; }
-.year-label { font-size: 22px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1rem; position: relative; }
-.year-label::before { content:''; position:absolute; left: -38px; top:50%; transform:translateY(-50%); width:10px; height:10px; border-radius:50%; border:2px solid var(--color-border-primary); background: var(--color-background-primary); }
-
-.event-card { margin-bottom: 12px; position: relative; cursor: pointer; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); padding: 12px 14px; transition: border-color .15s, transform .1s; display: flex; gap: 12px; align-items: flex-start; }
-.event-card:hover { border-color: var(--color-border-secondary); transform: translateX(2px); }
-.event-card.expanded { border-color: var(--color-border-primary); background: var(--color-background-secondary); }
-.event-card::before { content:''; position:absolute; left:-33px; top:18px; width:8px; height:8px; border-radius:50%; background: var(--color-background-primary); border: 1.5px solid var(--color-border-secondary); transition: background .15s; }
-.event-card.expanded::before, .event-card:hover::before { background: var(--color-text-secondary); }
-
-.event-dot { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; margin-top: 1px; }
-.dot-known { background: var(--color-background-info); }
-.dot-rare { background: var(--color-background-warning); }
-.dot-anecdote { background: var(--color-background-success); }
-
-.event-main { flex: 1; min-width: 0; }
-.event-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.event-date { font-size: 11px; color: var(--color-text-secondary); font-weight: 500; letter-spacing: .04em; }
-.event-badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
-.badge-known { background: var(--color-background-info); color: var(--color-text-info); }
-.badge-rare { background: var(--color-background-warning); color: var(--color-text-warning); }
-.badge-anecdote { background: var(--color-background-success); color: var(--color-text-success); }
-
-.event-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-top: 4px; line-height: 1.4; }
-.event-detail { font-size: 13px; color: var(--color-text-secondary); line-height: 1.65; margin-top: 8px; display: none; }
-.event-detail.show { display: block; }
-.event-source { font-size: 11px; color: var(--color-text-tertiary); margin-top: 6px; display: none; }
-.event-source.show { display: block; }
-.event-source a { color: var(--color-text-info); text-decoration: none; }
-.event-source a:hover { text-decoration: underline; }
-.event-arrow { color: var(--color-text-tertiary); font-size: 12px; transition: transform .2s; flex-shrink: 0; margin-top: 6px; }
-.event-card.expanded .event-arrow { transform: rotate(180deg); }
-
-.legend { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: 12px; color: var(--color-text-secondary); }
-.leg-item { display: flex; align-items: center; gap: 5px; }
-.leg-dot { width: 10px; height: 10px; border-radius: 50%; }
-
-.count-bar { text-align:center; font-size:12px; color:var(--color-text-tertiary); margin-bottom:1.5rem; }
-</style>
-
-<div class="tl-wrap">
-  <div class="tl-header">
-    <div class="tl-title">1939 — 1945 · Seconde Guerre Mondiale</div>
-    <div class="tl-sub">Événements connus, oubliés et anecdotes méconnues · Sources Wikipedia</div>
+  <!-- ══════════ LÉGENDE ══════════ -->
+  <div class="legend" aria-hidden="true">
+    <div class="leg-item">
+      <div class="leg-dot known"></div>
+      <span>Histoire officielle</span>
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot rare"></div>
+      <span>Peu connu</span>
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot anec"></div>
+      <span>Anecdote</span>
+    </div>
   </div>
 
-  <div class="filter-row">
-    <button class="filter-btn active" onclick="filter('all',this)">Tous</button>
-    <button class="filter-btn" onclick="filter('known',this)">📖 Histoire officielle</button>
-    <button class="filter-btn" onclick="filter('rare',this)">🔍 Peu connu</button>
-    <button class="filter-btn" onclick="filter('anecdote',this)">💡 Anecdote</button>
-  </div>
+  <!-- ══════════ TIMELINE ══════════ -->
+  <main>
+    <div class="timeline-wrap">
+      <div class="timeline-spine" aria-hidden="true"></div>
+      <div id="timeline-root"></div>
+    </div>
+  </main>
 
-  <div class="legend">
-    <div class="leg-item"><div class="leg-dot" style="background:var(--color-background-info);border:1px solid var(--color-border-secondary)"></div> Histoire officielle</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--color-background-warning);border:1px solid var(--color-border-secondary)"></div> Peu connu</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--color-background-success);border:1px solid var(--color-border-secondary)"></div> Anecdote</div>
-  </div>
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="site-footer">
+    Sources : <a href="https://fr.wikipedia.org" target="_blank" rel="noopener">Wikipédia</a>
+    &nbsp;·&nbsp; Données à titre documentaire et éducatif
+  </footer>
 
-  <div class="count-bar" id="count-bar">Cliquez sur un événement pour en savoir plus</div>
-
-  <div class="tl-line-wrap">
-    <div class="tl-spine"></div>
-    <div id="timeline-root"></div>
-  </div>
-</div>
-
-<script>
-const events = [
-  { year:1939, date:"1 sept. 1939", cat:"known", icon:"💣",
-    title:"Invasion de la Pologne",
-    detail:"L'Allemagne nazie déclenche la Blitzkrieg en Pologne. Deux jours plus tard, la France et le Royaume-Uni déclarent la guerre. Le pays est envahi simultanément par l'URSS à l'est le 17 septembre.",
-    wiki:"https://fr.wikipedia.org/wiki/Invasion_de_la_Pologne" },
-  { year:1939, date:"28 sept. 1939", cat:"rare", icon:"🔍",
-    title:"La résistance polonaise en exil est fondée en 24h",
-    detail:"En moins d'une journée après la capitulation de Varsovie, le gouvernement polonais se reconstituait en exil à Paris. L'armée secrète polonaise (ZWZ) allait devenir l'un des réseaux de résistance les plus organisés d'Europe.",
-    wiki:"https://fr.wikipedia.org/wiki/Armée_de_l%27intérieur_(Pologne)" },
-  { year:1939, date:"Nov. 1939", cat:"anecdote", icon:"💡",
-    title:"La Finlande résiste à l'URSS avec des skis",
-    detail:"La Guerre d'Hiver oppose la Finlande à l'URSS. Les soldats finlandais, surnommés 'fantômes blancs', harcelaient les colonnes soviétiques à ski dans la forêt enneigée. Le tireur d'élite Simo Häyhä aurait tué plus de 500 soldats soviétiques.",
-    wiki:"https://fr.wikipedia.org/wiki/Simo_H%C3%A4yh%C3%A4" },
-
-  { year:1940, date:"10 mai 1940", cat:"known", icon:"⚔️",
-    title:"Offensive allemande à l'Ouest — la France envahie",
-    detail:"La Wehrmacht contourne la ligne Maginot par les Ardennes. En six semaines, la France capitule. L'événement militaire le plus rapide contre une grande puissance de l'histoire moderne.",
-    wiki:"https://fr.wikipedia.org/wiki/Bataille_de_France" },
-  { year:1940, date:"Juin 1940", cat:"rare", icon:"🔍",
-    title:"L'évacuation de Dunkerque sauvée par la météo et des civils",
-    detail:"338 000 soldats alliés sont évacués grâce à des milliers de petits bateaux de plaisance civils. Une brume matinale inattendue masquait les troupes à la Luftwaffe plusieurs matins de suite, jouant un rôle décisif.",
-    wiki:"https://fr.wikipedia.org/wiki/%C3%89vacuation_de_Dunkerque" },
-  { year:1940, date:"Été 1940", cat:"anecdote", icon:"💡",
-    title:"Paris déclaré ville ouverte — les Allemands étaient stupéfaits",
-    detail:"Les soldats allemands entrant dans Paris s'attendaient à combattre rue par rue. Ils découvrirent une ville calme et intacte. Certains officiers allèrent au musée du Louvre et à la tour Eiffel en touristes dès les premiers jours.",
-    wiki:"https://fr.wikipedia.org/wiki/Occupation_de_Paris" },
-  { year:1940, date:"Juil.-Oct. 1940", cat:"known", icon:"✈️",
-    title:"Bataille d'Angleterre",
-    detail:"Première grande bataille aérienne de l'histoire. La RAF, malgré l'infériorité numérique, repousse la Luftwaffe. Churchill : 'Jamais dans l'histoire des conflits humains autant de gens n'ont dû autant à si peu.'",
-    wiki:"https://fr.wikipedia.org/wiki/Bataille_d%27Angleterre" },
-  { year:1940, date:"Oct. 1940", cat:"anecdote", icon:"💡",
-    title:"Un zoo de Berlin sauve ses animaux des bombes… en les camouflant",
-    detail:"Pour protéger les animaux du zoo de Berlin lors des premiers raids, les gardiens peignaient certains animaux en kaki et creusaient des abris. Un rhinocéros blessé par un éclat fut soigné par les vétérinaires du zoo pendant tout le conflit.",
-    wiki:"https://fr.wikipedia.org/wiki/Zoo_de_Berlin" },
-
-  { year:1941, date:"22 juin 1941", cat:"known", icon:"🗺️",
-    title:"Opération Barbarossa — l'URSS envahie",
-    detail:"3 millions de soldats allemands franchissent la frontière soviétique. Plus grande invasion terrestre de l'histoire. Hitler rompt le pacte germano-soviétique et ouvre un second front gigantesque.",
-    wiki:"https://fr.wikipedia.org/wiki/Op%C3%A9ration_Barbarossa" },
-  { year:1941, date:"Été 1941", cat:"rare", icon:"🔍",
-    title:"Le 'Train fantôme' soviétique sauvait des œuvres d'art",
-    detail:"Alors que les Allemands avançaient, des trains spéciaux évacuaient les collections de l'Ermitage (Léningrad) vers l'Oural. 1,2 million d'objets furent déplacés en secret en quelques semaines.",
-    wiki:"https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_l%27Ermitage" },
-  { year:1941, date:"7 déc. 1941", cat:"known", icon:"🌊",
-    title:"Attaque de Pearl Harbor",
-    detail:"L'aviation japonaise détruit la flotte américaine du Pacifique. Les États-Unis entrent en guerre. Franklin Roosevelt qualifie ce jour de 'date qui vivra dans l'infamie'.",
-    wiki:"https://fr.wikipedia.org/wiki/Attaque_de_Pearl_Harbor" },
-  { year:1941, date:"Déc. 1941", cat:"anecdote", icon:"💡",
-    title:"Hitler déclare la guerre aux États-Unis… de lui-même",
-    detail:"Quatre jours après Pearl Harbor, Hitler déclare la guerre aux États-Unis alors qu'il n'y était nullement obligé par ses traités. La plupart des historiens considèrent cette décision comme l'une de ses erreurs stratégiques les plus inexplicables.",
-    wiki:"https://fr.wikipedia.org/wiki/D%C3%A9claration_de_guerre_de_l%27Allemagne_aux_%C3%89tats-Unis" },
-
-  { year:1942, date:"Janv. 1942", cat:"rare", icon:"🔍",
-    title:"La conférence de Wannsee : 90 minutes pour décider du génocide",
-    detail:"Quinze hauts fonctionnaires nazis se réunirent 90 minutes à Wannsee pour coordonner la 'Solution finale'. Le procès-verbal de cette réunion, retrouvé en 1947, est l'un des documents les plus glaçants du XXe siècle.",
-    wiki:"https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Wannsee" },
-  { year:1942, date:"Fév. 1942", cat:"anecdote", icon:"💡",
-    title:"Les pigeons voyageurs avaient leurs propres médailles militaires",
-    detail:"La marine britannique employait des milliers de pigeons voyageurs. 'Cher ami', un pigeon, sauva l'équipage d'un hydravion abattu en mer en portant leur position. Il reçut la médaille Dickin — l'équivalent animal de la Victoria Cross.",
-    wiki:"https://fr.wikipedia.org/wiki/M%C3%A9daille_Dickin" },
-  { year:1942, date:"Août-Fév. 1943", cat:"known", icon:"🔥",
-    title:"Bataille de Stalingrad",
-    detail:"Le tournant de la guerre à l'Est. 800 000 morts côté allemand, plus d'un million côté soviétique. La 6e armée de Paulus capitule dans les ruines de la ville. Hitler refuse l'évacuation jusqu'au bout.",
-    wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Stalingrad" },
-  { year:1942, date:"Nov. 1942", cat:"rare", icon:"🔍",
-    title:"Operation Torch : les GIs ignoraient où ils allaient",
-    detail:"Lors du débarquement américain en Afrique du Nord, la plupart des soldats ne savaient pas leur destination jusqu'à 36h avant l'assaut. Les ordres étaient dans des enveloppes scellées. Certains pensaient attaquer Dakar.",
-    wiki:"https://fr.wikipedia.org/wiki/Op%C3%A9ration_Torch" },
-
-  { year:1943, date:"Juil. 1943", cat:"known", icon:"⚔️",
-    title:"Débarquement en Sicile & chute de Mussolini",
-    detail:"Les Alliés ouvrent un second front méditerranéen. Mussolini est arrêté par le Grand Conseil fasciste puis emprisonné. Il sera libéré par des parachutistes allemands deux mois plus tard.",
-    wiki:"https://fr.wikipedia.org/wiki/Op%C3%A9ration_Husky" },
-  { year:1943, date:"Été 1943", cat:"anecdote", icon:"💡",
-    title:"Des rats-bombes et des chauves-souris kamikaze : les projets secrets alliés",
-    detail:"Les Alliés testèrent sérieusement des chauves-souris portant de petites bombes incendiaires larguées sur les villes japonaises. Le projet 'Adams Plan' coûta des millions avant d'être abandonné — notamment après qu'une chauve-souris mit le feu à une base américaine.",
-    wiki:"https://fr.wikipedia.org/wiki/Bat_bomb" },
-  { year:1943, date:"Nov. 1943", cat:"rare", icon:"🔍",
-    title:"Conférence de Téhéran : trois géants sous le même toit",
-    detail:"Staline, Roosevelt et Churchill se rencontrent pour la première fois tous les trois. Roosevelt, inquiet d'une menace d'attentat, dormait dans l'ambassade soviétique. Les Britanniques soupçonnèrent les Soviétiques d'avoir posé des micros.",
-    wiki:"https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_T%C3%A9h%C3%A9ran" },
-
-  { year:1944, date:"6 juin 1944", cat:"known", icon:"🛥️",
-    title:"Débarquement en Normandie — Jour J",
-    detail:"156 000 soldats alliés prennent d'assaut les plages normandes. La plus grande opération amphibie de l'histoire. La ruse de l'opération Fortitude fit croire à Hitler que le vrai débarquement aurait lieu au Pas-de-Calais.",
-    wiki:"https://fr.wikipedia.org/wiki/D%C3%A9barquement_de_Normandie" },
-  { year:1944, date:"Juin 1944", cat:"rare", icon:"🔍",
-    title:"L'armée fantôme qui a trompé Hitler",
-    detail:"L'opération Fortitude créa une fausse armée entière (FUSAG), commandée nominalement par Patton, avec de faux chars gonflables, de fausses transmissions radio et des agents doubles. Hitler attendit des semaines avant de déplacer ses Panzers, convaincu d'une feinte.",
-    wiki:"https://fr.wikipedia.org/wiki/Op%C3%A9ration_Fortitude" },
-  { year:1944, date:"Juil. 1944", cat:"rare", icon:"🔍",
-    title:"Attentat du 20 juillet — Hitler survit à 2 cm près",
-    detail:"La bombe de von Stauffenberg était à 2 mètres d'Hitler mais une table en bois massif dévia le souffle. Des 24 personnes présentes, 4 moururent. Hitler présenta ses blessures à Mussolini quelques heures plus tard avec une fierté morbide.",
-    wiki:"https://fr.wikipedia.org/wiki/Attentat_du_20_juillet_1944" },
-  { year:1944, date:"Août 1944", cat:"anecdote", icon:"💡",
-    title:"Paris libéré avec des voitures à gazogène",
-    detail:"La libération de Paris (25 août 1944) fut menée en partie avec des voitures et camions fonctionnant au gazogène — un gaz produit par la combustion de bois — faute d'essence. Des taxis parisiens rejoignirent la colonne de Leclerc avec leurs propres chars à bois.",
-    wiki:"https://fr.wikipedia.org/wiki/Lib%C3%A9ration_de_Paris" },
-  { year:1944, date:"Déc. 1944", cat:"known", icon:"❄️",
-    title:"Bataille des Ardennes — la dernière offensive allemande",
-    detail:"Hitler lance sa dernière grande contre-offensive à l'ouest. 30 divisions allemandes percent le front américain dans les Ardennes. La résistance de Bastogne et la météo qui se lève permettent aux Alliés de renverser la situation.",
-    wiki:"https://fr.wikipedia.org/wiki/Bataille_des_Ardennes" },
-  { year:1944, date:"Hiver 1944", cat:"anecdote", icon:"💡",
-    title:"Les soldats américains offraient des cigarettes contre des informations — et créaient des réseaux",
-    detail:"Sur tous les fronts, le troc informel de cigarettes Camel ou Lucky Strike contre des informations, des faveurs ou de la nourriture créait un économie parallèle. Une cartouche de cigarettes valait plus qu'un mois de solde dans certaines zones libérées.",
-    wiki:"https://fr.wikipedia.org/wiki/Cigarette#Usages_symboliques_et_sociaux" },
-
-  { year:1945, date:"Fév. 1945", cat:"rare", icon:"🔍",
-    title:"Conférence de Yalta : l'Europe redessinée en trois jours",
-    detail:"Churchill, Roosevelt et Staline décidèrent en trois jours du sort de l'Europe d'après-guerre. Roosevelt était gravement malade (il mourut deux mois plus tard). Certains historiens estiment que cela affaiblit la position américaine face à Staline.",
-    wiki:"https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Yalta" },
-  { year:1945, date:"13-15 fév. 1945", cat:"rare", icon:"🔍",
-    title:"Bombardement de Dresde — le débat qui dure encore",
-    detail:"800 bombardiers britanniques et américains rasèrent le centre historique de Dresde. Le nombre de morts (entre 22 000 et 25 000) fut longtemps manipulé par la propagande nazie qui annonça 250 000 victimes. Le débat sur la nécessité militaire de ce raid n'est pas clos.",
-    wiki:"https://fr.wikipedia.org/wiki/Bombardement_de_Dresde" },
-  { year:1945, date:"30 avr. 1945", cat:"known", icon:"💀",
-    title:"Suicide d'Hitler dans le Führerbunker",
-    detail:"Hitler se suicide avec Eva Braun dans son bunker sous Berlin, un jour après leur mariage. Leurs corps furent brûlés dans le jardin de la Chancellerie selon ses instructions. Les soldats soviétiques trouvèrent les restes quelques heures plus tard.",
-    wiki:"https://fr.wikipedia.org/wiki/Mort_d%27Adolf_Hitler" },
-  { year:1945, date:"Avr.-Mai 1945", cat:"anecdote", icon:"💡",
-    title:"Des soldats japonais continueront à combattre des décennies plus tard",
-    detail:"Hiroo Onoda, officier japonais aux Philippines, continua sa mission de guérilla jusqu'en 1974 — 29 ans après la fin de la guerre — car personne ne l'avait informé de la capitulation. Son supérieur dut venir en personne lui ordonner de rendre les armes.",
-    wiki:"https://fr.wikipedia.org/wiki/Hiroo_Onoda" },
-  { year:1945, date:"6-9 août 1945", cat:"known", icon:"☢️",
-    title:"Bombes atomiques sur Hiroshima et Nagasaki",
-    detail:"'Little Boy' (6 août) et 'Fat Man' (9 août) font entre 130 000 et 226 000 morts, principalement civils. C'est à ce jour la seule utilisation militaire d'armes nucléaires dans l'histoire.",
-    wiki:"https://fr.wikipedia.org/wiki/Bombardements_atomiques_d%27Hiroshima_et_Nagasaki" },
-  { year:1945, date:"2 sept. 1945", cat:"known", icon:"✍️",
-    title:"Capitulation japonaise — fin officielle de la guerre",
-    detail:"Sur le pont du cuirassé USS Missouri, le Japon signe la reddition. La cérémonie dure 23 minutes. Le général MacArthur préside. La Seconde Guerre Mondiale est officiellement terminée — 6 ans et 1 jour après l'invasion de la Pologne.",
-    wiki:"https://fr.wikipedia.org/wiki/Capitulation_du_Japon" },
-  { year:1945, date:"Après 1945", cat:"rare", icon:"🔍",
-    title:"Des nazis s'enfuient via des 'ratlines' — avec complicité vaticane ?",
-    detail:"Des milliers de criminels de guerre nazis fuirent vers l'Amérique du Sud via des réseaux clandestins appelés 'ratlines', en passant souvent par l'Italie avec de faux passeports. Des documents déclassifiés suggèrent que des agents du Vatican facilitèrent certains passages.",
-    wiki:"https://fr.wikipedia.org/wiki/Filières_d%27évasion_nazis" },
-];
-
-const years = [...new Set(events.map(e => e.year))].sort();
-let currentFilter = 'all';
-
-function render() {
-  const root = document.getElementById('timeline-root');
-  root.innerHTML = '';
-  const filtered = events.filter(e => currentFilter === 'all' || e.cat === currentFilter);
-  document.getElementById('count-bar').textContent = filtered.length + ' événement' + (filtered.length>1?'s':'') + ' · Cliquez pour développer';
-
-  years.forEach(yr => {
-    const yEvents = filtered.filter(e => e.year === yr);
-    if (!yEvents.length) return;
-    const yBlock = document.createElement('div');
-    yBlock.className = 'tl-year-block';
-    const yLabel = document.createElement('div');
-    yLabel.className = 'year-label';
-    yLabel.textContent = yr;
-    yBlock.appendChild(yLabel);
-    yEvents.forEach(ev => {
-      const card = document.createElement('div');
-      card.className = 'event-card';
-      const badgeClass = { known:'badge-known', rare:'badge-rare', anecdote:'badge-anecdote' }[ev.cat];
-      const dotClass = { known:'dot-known', rare:'dot-rare', anecdote:'dot-anecdote' }[ev.cat];
-      const badgeLabel = { known:'Histoire officielle', rare:'Peu connu', anecdote:'Anecdote' }[ev.cat];
-      card.innerHTML = `
-        <div class="event-dot ${dotClass}">${ev.icon}</div>
-        <div class="event-main">
-          <div class="event-top">
-            <span class="event-date">${ev.date}</span>
-            <span class="event-badge ${badgeClass}">${badgeLabel}</span>
-          </div>
-          <div class="event-title">${ev.title}</div>
-          <div class="event-detail">${ev.detail}</div>
-          <div class="event-source"><a href="${ev.wiki}" target="_blank">Source Wikipedia <i class="ti ti-external-link" aria-hidden="true"></i></a></div>
-        </div>
-        <div class="event-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
-      `;
-      card.addEventListener('click', () => {
-        const expanded = card.classList.toggle('expanded');
-        card.querySelector('.event-detail').classList.toggle('show', expanded);
-        card.querySelector('.event-source').classList.toggle('show', expanded);
-      });
-      yBlock.appendChild(card);
-    });
-    root.appendChild(yBlock);
-  });
-}
-
-function filter(cat, btn) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  render();
-}
-
-render();
-</script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
