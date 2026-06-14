@@ -73,10 +73,8 @@
     block.dataset.year = year;
 
     block.innerHTML = `
-      <div class="year-marker">
-        <div class="year-number">${year}</div>
-        <div class="year-dot"></div>
-        <div class="year-line"></div>
+      <div class="year-marker" aria-label="Année ${year}">
+        <div class="year-badge">${year}</div>
       </div>
     `;
 
