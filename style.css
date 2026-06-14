@@ -254,44 +254,45 @@ body {
 }
 
 /* ─── ANNÉE ─── */
-.year-block { margin-bottom: 40px; }
+.year-block { margin-bottom: 48px; }
 
 .year-marker {
   position: relative;
   margin-left: calc(-1 * var(--spine-x));
+  margin-bottom: 24px;
+  height: 36px;
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 20px;
 }
-.year-number {
-  font-family: var(--font-serif);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--line);
-  letter-spacing: .08em;
-  width: calc(var(--spine-x) - 16px);
-  text-align: right;
-  padding-right: 12px;
-  flex-shrink: 0;
-  line-height: 1;
-  padding-top: 1px;
-}
-.year-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--line);
-  flex-shrink: 0;
-  margin-left: -6px;
-  box-shadow: 0 0 0 4px var(--line-glow);
-}
-.year-line {
-  flex: 1;
+
+/* ligne horizontale décorative */
+.year-marker::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--spine-x) + 32px);
+  right: 0;
   height: 1px;
-  background: linear-gradient(to right, var(--line-dim), transparent);
-  margin-left: 12px;
+  background: linear-gradient(to right, var(--line-dim) 0%, transparent 80%);
+}
+
+/* badge année centré sur la spine */
+.year-badge {
+  position: relative;
+  left: calc(var(--spine-x) - 28px);
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: 5px;
+  padding: 4px 14px;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--line);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  box-shadow: 0 0 0 5px var(--bg), 0 0 16px var(--line-glow), 0 2px 8px rgba(0,0,0,.4);
+  line-height: 1.2;
+  z-index: 2;
+  user-select: none;
 }
 
 /* ─── EVENT CARD ─── */
