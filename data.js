@@ -1,340 +1,143 @@
 const EVENTS = [
-  {
-    year: 1939,
-    date: "1 septembre 1939",
-    dateShort: "1 sept.",
-    cat: "known",
-    icon: "💣",
-    title: "Invasion de la Pologne",
-    detail: "L'Allemagne nazie déclenche la Blitzkrieg en Pologne. Deux jours plus tard, la France et le Royaume-Uni déclarent la guerre. Le pays est envahi simultanément par l'URSS à l'est le 17 septembre.",
-    stat: "1,7 million de soldats allemands mobilisés",
-    wiki: "https://fr.wikipedia.org/wiki/Invasion_de_la_Pologne"
-  },
-  {
-    year: 1939,
-    date: "28 septembre 1939",
-    dateShort: "28 sept.",
-    cat: "rare",
-    icon: "🗂️",
-    title: "La résistance polonaise se reconstruit en exil en 24h",
-    detail: "En moins d'une journée après la capitulation de Varsovie, le gouvernement polonais se reconstituait à Paris. L'armée secrète polonaise (ZWZ) allait devenir l'un des réseaux de résistance les plus organisés d'Europe.",
-    stat: "400 000 soldats polonais combattirent hors de Pologne",
-    wiki: "https://fr.wikipedia.org/wiki/Arm%C3%A9e_de_l%27int%C3%A9rieur_(Pologne)"
-  },
-  {
-    year: 1939,
-    date: "Novembre 1939",
-    dateShort: "Nov.",
-    cat: "anecdote",
-    icon: "🎿",
-    title: "La Finlande résiste à l'URSS à ski",
-    detail: "La Guerre d'Hiver oppose la Finlande à l'URSS. Les soldats finlandais, surnommés « fantômes blancs », harcelaient les colonnes soviétiques à ski dans la forêt enneigée. Le tireur d'élite Simo Häyhä aurait tué plus de 500 soldats soviétiques, devenant la source de la plupart des légendes modernes sur les snipers.",
-    stat: "Simo Häyhä : ~500 kills confirmés en moins de 100 jours",
-    wiki: "https://fr.wikipedia.org/wiki/Simo_H%C3%A4yh%C3%A4"
-  },
 
-  {
-    year: 1940,
-    date: "10 mai 1940",
-    dateShort: "10 mai",
-    cat: "known",
-    icon: "⚔️",
-    title: "Offensive allemande à l'Ouest — la France envahie",
-    detail: "La Wehrmacht contourne la ligne Maginot par les Ardennes. En six semaines, la France capitule. C'est l'un des effondrements militaires les plus rapides d'une grande puissance de l'histoire moderne.",
-    stat: "46 jours entre l'offensive et l'armistice",
-    wiki: "https://fr.wikipedia.org/wiki/Bataille_de_France"
-  },
-  {
-    year: 1940,
-    date: "26 mai – 4 juin 1940",
-    dateShort: "Mai–Juin",
-    cat: "rare",
-    icon: "⛵",
-    title: "Dunkerque sauvé par la brume et des bateaux civils",
-    detail: "338 000 soldats alliés sont évacués grâce à des milliers de petits bateaux de plaisance civils. Une brume matinale inattendue masquait les troupes à la Luftwaffe plusieurs matins de suite, jouant un rôle décisif que la météo seule ne peut expliquer.",
-    stat: "338 226 soldats évacués en 9 jours",
-    wiki: "https://fr.wikipedia.org/wiki/%C3%89vacuation_de_Dunkerque"
-  },
-  {
-    year: 1940,
-    date: "Été 1940",
-    dateShort: "Été",
-    cat: "anecdote",
-    icon: "🎨",
-    title: "Les Allemands visitent Paris… en touristes",
-    detail: "Les soldats allemands entrant dans Paris s'attendaient à combattre rue par rue. Ils découvrirent une ville calme et intacte. Certains officiers allèrent au Louvre et à la Tour Eiffel en touristes dès les premiers jours de l'occupation.",
-    stat: "Paris déclarée « ville ouverte » le 14 juin 1940",
-    wiki: "https://fr.wikipedia.org/wiki/Occupation_de_Paris"
-  },
-  {
-    year: 1940,
-    date: "Juillet – Octobre 1940",
-    dateShort: "Juil.–Oct.",
-    cat: "known",
-    icon: "✈️",
-    title: "Bataille d'Angleterre",
-    detail: "Première grande bataille aérienne de l'histoire. La RAF, malgré l'infériorité numérique, repousse la Luftwaffe. Churchill : « Jamais dans l'histoire des conflits humains autant de gens n'ont dû autant à si peu. »",
-    stat: "2 936 pilotes de la RAF contre ~2 500 avions de la Luftwaffe",
-    wiki: "https://fr.wikipedia.org/wiki/Bataille_d%27Angleterre"
-  },
+  /* ══════════════════════════════════════════
+     1939
+  ══════════════════════════════════════════ */
+  { year:1939, dateShort:"1 sept.",    cat:"known",    icon:"💣", title:"Invasion de la Pologne — la Blitzkrieg s'abat sur l'Europe", detail:"3 millions de soldats allemands franchissent la frontière polonaise à l'aube. La Blitzkrieg combine blindés, aviation et infanterie motorisée dans une doctrine nouvelle. En 36 jours, le pays est à genoux.", stat:"1,7 million de soldats allemands, 2 600 chars", wiki:"https://fr.wikipedia.org/wiki/Invasion_de_la_Pologne" },
+  { year:1939, dateShort:"3 sept.",    cat:"known",    icon:"📜", title:"France et Royaume-Uni déclarent la guerre à l'Allemagne", detail:"Respectant leurs engagements envers la Pologne, Paris et Londres déclarent la guerre le 3 septembre. La 'drôle de guerre' commence : huit mois de front immobile à l'Ouest.", stat:"Début officiel du conflit européen", wiki:"https://fr.wikipedia.org/wiki/Drôle_de_guerre" },
+  { year:1939, dateShort:"17 sept.",   cat:"known",    icon:"☭",  title:"L'URSS envahit la Pologne par l'est", detail:"En vertu du protocole secret du pacte Molotov-Ribbentrop, l'Armée rouge entre en Pologne par l'est. La Pologne est partagée entre les deux puissances totalitaires.", stat:"Environ 230 000 soldats soviétiques engagés", wiki:"https://fr.wikipedia.org/wiki/Invasion_soviétique_de_la_Pologne_(1939)" },
+  { year:1939, dateShort:"27 sept.",   cat:"known",    icon:"🏳️", title:"Varsovie capitule après 20 jours de siège", detail:"Après des bombardements aériens intensifs et un siège de trois semaines, Varsovie capitule. La ville est rasée à 85 % avant la fin de la guerre, devenant le symbole de la barbarie nazie.", stat:"25 000 civils polonais tués pendant le siège", wiki:"https://fr.wikipedia.org/wiki/Siège_de_Varsovie_(1939)" },
+  { year:1939, dateShort:"28 sept.",   cat:"rare",     icon:"🗂️", title:"Le gouvernement polonais en exil reconstitué en 24h", detail:"En moins d'une journée après la capitulation de Varsovie, le gouvernement polonais se reconstitue à Paris. L'armée secrète polonaise (ZWZ) deviendra l'un des réseaux de résistance les plus organisés d'Europe.", stat:"400 000 soldats polonais combattirent hors de Pologne", wiki:"https://fr.wikipedia.org/wiki/Armée_de_l%27intérieur_(Pologne)" },
+  { year:1939, dateShort:"30 nov.",    cat:"known",    icon:"🎿", title:"Guerre d'Hiver : l'URSS attaque la Finlande", detail:"Stalin lance une offensive massive contre la petite Finlande. Contre toute attente, les Finlandais résistent pendant 105 jours, infligeant des pertes colossales à l'Armée rouge et révélant ses faiblesses au monde.", stat:"125 000 soldats soviétiques tués contre 25 000 Finlandais", wiki:"https://fr.wikipedia.org/wiki/Guerre_d%27Hiver" },
+  { year:1939, dateShort:"Nov.",       cat:"anecdote", icon:"🎯", title:"Simo Häyhä : le 'Fantôme Blanc' tue 500 hommes à ski", detail:"Le tireur d'élite finlandais Simo Häyhä opérait dans la forêt enneigée à -40°C, souvent sans lunette de visée pour éviter tout reflet. En moins de 100 jours, il accumule le plus grand nombre de kills confirmés de l'histoire des snipers.", stat:"~500 kills en 98 jours, record mondial de sniper", wiki:"https://fr.wikipedia.org/wiki/Simo_Häyhä" },
+  { year:1939, dateShort:"13 déc.",    cat:"rare",     icon:"⚓", title:"Bataille du Rio de la Plata — le premier grand engagement naval", detail:"Trois croiseurs britanniques affrontent le cuirassé de poche allemand Graf Spee au large de l'Uruguay. Endommagé et piégé dans le port de Montevideo, le capitaine allemand ordonne le sabordage plutôt que la reddition.", stat:"Premier engagement naval majeur de la guerre", wiki:"https://fr.wikipedia.org/wiki/Bataille_du_Rio_de_la_Plata" },
+  { year:1939, dateShort:"23 août",    cat:"known",    icon:"🤝", title:"Pacte Molotov-Ribbentrop : l'alliance qui choqua le monde", detail:"L'Allemagne nazie et l'URSS signent un pacte de non-agression assorti d'un protocole secret divisant l'Europe de l'Est en zones d'influence. Le monde entier est stupéfait de voir deux idéologies ennemies s'allier.", stat:"Signé 8 jours avant l'invasion de la Pologne", wiki:"https://fr.wikipedia.org/wiki/Pacte_germano-soviétique" },
+  { year:1939, dateShort:"1 sept.",    cat:"anecdote", icon:"📻", title:"La BBC annonce la guerre… entre deux émissions de danse", detail:"Le soir du 1er septembre, la BBC interrompt ses programmes réguliers pour annoncer l'invasion de la Pologne. Selon des témoignages, certains auditeurs crurent à une fiction radio, deux ans après la panique provoquée par 'La Guerre des Mondes'.", stat:"La BBC devient le média de guerre numéro un en Europe", wiki:"https://fr.wikipedia.org/wiki/BBC" },
+  { year:1939, dateShort:"Sept.",      cat:"rare",     icon:"🧒", title:"L'évacuation des enfants de Londres : 3 millions de 'Evacuees'", detail:"Dès le 1er septembre, l'opération Pied Piper évacue 1,5 million d'enfants londoniens vers la campagne. Des étiquettes accrochées à leurs manteaux portaient leur nom et leur destination. Beaucoup ne reverront pas leurs parents avant des années.", stat:"1,5 million d'enfants évacués de Londres en 3 jours", wiki:"https://fr.wikipedia.org/wiki/Évacuation_des_enfants_pendant_la_Seconde_Guerre_mondiale" },
 
-  {
-    year: 1941,
-    date: "22 juin 1941",
-    dateShort: "22 juin",
-    cat: "known",
-    icon: "🗺️",
-    title: "Opération Barbarossa — l'URSS envahie",
-    detail: "3 millions de soldats allemands franchissent la frontière soviétique. Plus grande invasion terrestre de l'histoire. Hitler rompt le pacte germano-soviétique et ouvre un second front gigantesque qui marquera le tournant du conflit.",
-    stat: "3 000 chars et 2 500 avions déployés le premier jour",
-    wiki: "https://fr.wikipedia.org/wiki/Op%C3%A9ration_Barbarossa"
-  },
-  {
-    year: 1941,
-    date: "Été 1941",
-    dateShort: "Été",
-    cat: "rare",
-    icon: "🖼️",
-    title: "Les trésors de l'Ermitage évacués en secret vers l'Oural",
-    detail: "Alors que les Allemands avançaient vers Léningrad, des trains spéciaux évacuaient les collections du musée de l'Ermitage. 1,2 million d'objets furent déplacés en secret en quelques semaines dans des caisses de bois, sans inventaire complet.",
-    stat: "1 200 000 objets déplacés en 2 convois ferroviaires",
-    wiki: "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_l%27Ermitage"
-  },
-  {
-    year: 1941,
-    date: "7 décembre 1941",
-    dateShort: "7 déc.",
-    cat: "known",
-    icon: "🌊",
-    title: "Attaque de Pearl Harbor",
-    detail: "L'aviation japonaise détruit la flotte américaine du Pacifique. Les États-Unis entrent en guerre. Franklin Roosevelt qualifie ce jour de « date qui vivra dans l'infamie ». Le Japon avait misé sur un knock-out ; c'était en réalité le début de sa fin.",
-    stat: "2 403 Américains tués, 19 navires coulés ou endommagés",
-    wiki: "https://fr.wikipedia.org/wiki/Attaque_de_Pearl_Harbor"
-  },
-  {
-    year: 1941,
-    date: "Décembre 1941",
-    dateShort: "Déc.",
-    cat: "anecdote",
-    icon: "🤦",
-    title: "Hitler déclare la guerre aux États-Unis… de lui-même",
-    detail: "Quatre jours après Pearl Harbor, Hitler déclare la guerre aux États-Unis alors qu'il n'y était nullement obligé par ses traités avec le Japon. La plupart des historiens considèrent cette décision comme l'une de ses erreurs stratégiques les plus inexplicables.",
-    stat: "4 jours après Pearl Harbor : déclaration de guerre volontaire",
-    wiki: "https://fr.wikipedia.org/wiki/D%C3%A9claration_de_guerre_de_l%27Allemagne_aux_%C3%89tats-Unis"
-  },
+  /* ══════════════════════════════════════════
+     1940
+  ══════════════════════════════════════════ */
+  { year:1940, dateShort:"9 avr.",     cat:"known",    icon:"🇩🇰", title:"Invasion du Danemark et de la Norvège", detail:"L'opération Weserübung — 'Exercice Weser' — est lancée simultanément contre le Danemark et la Norvège pour sécuriser les importations de minerai de fer suédois. Le Danemark capitule en moins de 6 heures.", stat:"Danemark : 6h de résistance. Norvège : 62 jours.", wiki:"https://fr.wikipedia.org/wiki/Opération_Weserübung" },
+  { year:1940, dateShort:"10 mai",     cat:"known",    icon:"⚔️", title:"Offensive à l'Ouest — la France envahie par les Ardennes", detail:"La Wehrmacht contourne la ligne Maginot par les Ardennes, terrain supposé infranchissable par les blindés. La percée de Sedan en 48 heures coupe les armées alliées en deux. En six semaines, la France capitule.", stat:"46 jours entre l'offensive et l'armistice", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_France" },
+  { year:1940, dateShort:"10 mai",     cat:"anecdote", icon:"🍺", title:"Churchill nommé Premier Ministre ce même jour", detail:"Le 10 mai 1940 — jour exact de l'offensive allemande — Winston Churchill remplace Chamberlain au 10 Downing Street. Il apprendra l'invasion alors qu'il prend ses fonctions. Sa première nuit au pouvoir sera la plus décisive de sa vie.", stat:"Churchill Premier Ministre depuis exactement 1 jour pendant Dunkerque", wiki:"https://fr.wikipedia.org/wiki/Winston_Churchill" },
+  { year:1940, dateShort:"14 mai",     cat:"rare",     icon:"📻", title:"L'appel de de Gaulle qui sauva l'honneur de la France", detail:"Le 18 juin 1940, le général de Gaulle lance son célèbre appel depuis les studios de la BBC à Londres. La plupart des Français ne l'entendirent pas en direct, mais le mythe fut construit avec soin après-guerre.", stat:"Seuls quelques milliers de Français entendirent l'appel en direct", wiki:"https://fr.wikipedia.org/wiki/Appel_du_18_Juin" },
+  { year:1940, dateShort:"26 mai",     cat:"known",    icon:"⛵", title:"Dunkerque : 338 000 soldats évacués par miracle", detail:"L'opération Dynamo évacue 338 226 soldats alliés grâce à 860 navires, dont des centaines de bateaux civils. Une brume providientielle masquait les troupes à la Luftwaffe. Hitler avait ordonné l'arrêt des Panzers — raison encore débattue.", stat:"338 226 soldats évacués en 9 jours", wiki:"https://fr.wikipedia.org/wiki/Évacuation_de_Dunkerque" },
+  { year:1940, dateShort:"10 juin",    cat:"known",    icon:"🤌", title:"L'Italie entre en guerre aux côtés de l'Allemagne", detail:"Mussolini, convaincu que la guerre est déjà gagnée, déclare la guerre à la France et au Royaume-Uni. Les premiers assauts italiens contre la France alpine sont facilement repoussés, présageant les déboires militaires futurs.", stat:"Italie déclare la guerre avec 10 divisions face à 6 françaises", wiki:"https://fr.wikipedia.org/wiki/Entrée_en_guerre_de_l%27Italie_(1940)" },
+  { year:1940, dateShort:"14 juin",    cat:"anecdote", icon:"🗼", title:"Paris déclarée ville ouverte — les soldats allemands font du tourisme", detail:"Les soldats allemands entrant dans Paris s'attendaient à combattre rue par rue. Ils trouvèrent une ville silencieuse, les cafés à moitié vides. Certains officiers se rendirent immédiatement au Louvre et à la Tour Eiffel, appareil photo en main.", stat:"Paris déclarée 'ville ouverte' le 13 juin 1940", wiki:"https://fr.wikipedia.org/wiki/Occupation_de_Paris" },
+  { year:1940, dateShort:"18 juin",    cat:"rare",     icon:"🏔️", title:"L'armistice franco-allemand signé dans le même wagon qu'en 1918", detail:"Par un geste symbolique délibéré, Hitler fit signer l'armistice dans la même forêt de Compiègne et dans le même wagon ferroviaire où l'Allemagne avait capitulé en 1918. Il posa le pied droit en avant — son geste de triomphe favori.", stat:"Le wagon de Compiègne fut ensuite détruit par les Allemands", wiki:"https://fr.wikipedia.org/wiki/Armistice_du_22_juin_1940" },
+  { year:1940, dateShort:"3 juil.",    cat:"rare",     icon:"🚢", title:"Mers-el-Kébir : la Royal Navy détruit la flotte française", detail:"Pour empêcher la flotte française de tomber aux mains des Allemands, Churchill ordonne l'attaque des navires français à Mers-el-Kébir (Algérie). 1 297 marins français sont tués par leurs anciens alliés. L'événement laisse des cicatrices durables.", stat:"1 297 marins français tués par la Royal Navy", wiki:"https://fr.wikipedia.org/wiki/Attaque_de_Mers-el-Kébir" },
+  { year:1940, dateShort:"10 juil.",   cat:"known",    icon:"✈️", title:"Bataille d'Angleterre — le ciel britannique comme dernière ligne", detail:"La Luftwaffe tente de détruire la RAF pour préparer l'invasion. Pendant 4 mois, les combats aériens au-dessus de l'Angleterre captivent le monde. La RAF résiste grâce au radar, aux Spitfire et à un courage extraordinaire.", stat:"2 936 pilotes de la RAF contre ~2 500 avions de la Luftwaffe", wiki:"https://fr.wikipedia.org/wiki/Bataille_d%27Angleterre" },
+  { year:1940, dateShort:"13 août",    cat:"rare",     icon:"📡", title:"Le radar sauve la Grande-Bretagne — l'arme invisible", detail:"Le système Chain Home de détection radar, mis en place depuis 1937, permit à la RAF de concentrer ses forces au bon endroit. Sans lui, l'Angleterre aurait été incapable de résister à la Luftwaffe numériquement supérieure.", stat:"21 stations radar sur 3 000 km de côtes britanniques", wiki:"https://fr.wikipedia.org/wiki/Chain_Home" },
+  { year:1940, dateShort:"7 sept.",    cat:"known",    icon:"🔥", title:"Le Blitz sur Londres — 57 nuits de bombardements consécutifs", detail:"La Luftwaffe bombarde Londres 57 nuits de suite. 43 000 civils britanniques seront tués pendant le Blitz. Mais loin de briser le moral, les bombardements renforcèrent la détermination britannique.", stat:"43 000 civils tués, 1 million de logements détruits", wiki:"https://fr.wikipedia.org/wiki/Blitz" },
+  { year:1940, dateShort:"Automne",    cat:"anecdote", icon:"🦅", title:"La Luftwaffe refuse de croire aux rapports radar britanniques", detail:"Les pilotes allemands signalaient que la RAF semblait 'toujours au bon endroit au bon moment'. Le commandement de la Luftwaffe attribua cela à la chance plutôt qu'à la technologie. Cette erreur d'analyse prolongea considérablement la bataille.", stat:"Goering ne crut jamais à l'efficacité du radar britannique", wiki:"https://fr.wikipedia.org/wiki/Bataille_d%27Angleterre" },
+  { year:1940, dateShort:"28 oct.",    cat:"known",    icon:"🇬🇷", title:"L'Italie attaque la Grèce — et se fait repousser", detail:"Mussolini lance une invasion de la Grèce depuis l'Albanie italienne sans prévenir Hitler. Contre toute attente, l'armée grecque repousse les Italiens sur le sol albanais. Hitler devra intervenir pour sauver son allié.", stat:"Les Grecs repoussent les Italiens de 50 km en territoire albanais", wiki:"https://fr.wikipedia.org/wiki/Guerre_gréco-italienne" },
+  { year:1940, dateShort:"Déc.",       cat:"rare",     icon:"🔬", title:"Le projet Manhattan est conceptualisé — l'arme absolue en gestation", detail:"Des physiciens réfugiés d'Europe (Einstein, Szilard, Fermi) alertent Roosevelt sur la possibilité d'une bombe atomique allemande. Le gouvernement américain commence à financer la recherche nucléaire en secret.", stat:"Budget initial : 6 000 dollars. Budget final : 2 milliards.", wiki:"https://fr.wikipedia.org/wiki/Projet_Manhattan" },
+  { year:1940, dateShort:"Nov.",       cat:"anecdote", icon:"🎭", title:"Operation Sea Lion n'a jamais existé — Hitler bluffait", detail:"L'opération 'Lion de Mer', le plan d'invasion de l'Angleterre, n'a probablement jamais été sérieusement préparée. Selon certains historiens, Hitler n'avait pas l'intention d'envahir et espérait que Churchill négocierait.", stat:"Aucune péniches d'invasion ne fut jamais mise à l'eau", wiki:"https://fr.wikipedia.org/wiki/Opération_Seelöwe" },
 
-  {
-    year: 1942,
-    date: "Janvier 1942",
-    dateShort: "Janv.",
-    cat: "rare",
-    icon: "📋",
-    title: "Wannsee : 90 minutes pour décider du génocide",
-    detail: "Quinze hauts fonctionnaires nazis se réunirent 90 minutes à Wannsee pour coordonner la « Solution finale ». Le procès-verbal retrouvé en 1947 est l'un des documents les plus glaçants du XXe siècle — un génocide planifié comme une réunion de management.",
-    stat: "15 participants, 11 millions de victimes prévues au tableau",
-    wiki: "https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Wannsee"
-  },
-  {
-    year: 1942,
-    date: "Février 1942",
-    dateShort: "Fév.",
-    cat: "anecdote",
-    icon: "🕊️",
-    title: "Des pigeons voyageurs décorés de médailles militaires",
-    detail: "La marine britannique employait des milliers de pigeons voyageurs. « Cher Ami » sauva l'équipage d'un hydravion abattu en mer en portant leur position. Il reçut la médaille Dickin — l'équivalent animal de la Victoria Cross.",
-    stat: "32 pigeons ont reçu la médaille Dickin pendant la guerre",
-    wiki: "https://fr.wikipedia.org/wiki/M%C3%A9daille_Dickin"
-  },
-  {
-    year: 1942,
-    date: "Août 1942 – Février 1943",
-    dateShort: "Août–Fév.",
-    cat: "known",
-    icon: "🔥",
-    title: "Bataille de Stalingrad",
-    detail: "Le tournant de la guerre à l'Est. 800 000 morts côté allemand, plus d'un million côté soviétique. La 6e armée de Paulus capitule dans les ruines d'une ville que Hitler refusa d'évacuer par orgueil jusqu'au bout.",
-    stat: "~2 millions de morts en 6 mois de combat urbain",
-    wiki: "https://fr.wikipedia.org/wiki/Bataille_de_Stalingrad"
-  },
-  {
-    year: 1942,
-    date: "Novembre 1942",
-    dateShort: "Nov.",
-    cat: "rare",
-    icon: "🌍",
-    title: "Opération Torch : les GIs ignoraient leur destination",
-    detail: "Lors du débarquement américain en Afrique du Nord, la plupart des soldats ne savaient pas leur destination jusqu'à 36h avant l'assaut. Les ordres étaient dans des enveloppes scellées. Certains pensaient attaquer Dakar ou la Norvège.",
-    stat: "107 000 soldats alliés débarquèrent sans connaître leur objectif",
-    wiki: "https://fr.wikipedia.org/wiki/Op%C3%A9ration_Torch"
-  },
+  /* ══════════════════════════════════════════
+     1941
+  ══════════════════════════════════════════ */
+  { year:1941, dateShort:"6 avr.",     cat:"known",    icon:"⚔️", title:"Invasion de la Yougoslavie et de la Grèce", detail:"L'Allemagne envahit simultanément la Yougoslavie et la Grèce pour renflouer son allié italien. La Grèce capitule en 24 jours, la Yougoslavie en 11. Cette campagne retardera de plusieurs semaines l'opération Barbarossa.", stat:"Yougoslavie : 11 jours. Grèce : 24 jours.", wiki:"https://fr.wikipedia.org/wiki/Invasion_de_la_Grèce_par_l%27Axe" },
+  { year:1941, dateShort:"20 mai",     cat:"rare",     icon:"🪂", title:"Crète : la plus grande bataille aéroportée de l'histoire", detail:"L'Allemagne lance l'opération Merkur : 22 000 parachutistes sautent sur la Crète. Malgré la victoire finale, les pertes sont si lourdes que Hitler n'emploiera plus jamais les parachutistes en masse.", stat:"4 000 parachutistes allemands tués en une semaine", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Crète" },
+  { year:1941, dateShort:"22 juin",    cat:"known",    icon:"🗺️", title:"Opération Barbarossa — l'URSS envahie sur 2 900 km de front", detail:"3,8 millions de soldats allemands et alliés franchissent la frontière soviétique sur un front de 2 900 km — le plus grand de l'histoire militaire. Staline, paralysé par la surprise, ne parle pas à son peuple pendant 11 jours.", stat:"3,8 millions d'hommes, 3 350 chars, 2 770 avions", wiki:"https://fr.wikipedia.org/wiki/Opération_Barbarossa" },
+  { year:1941, dateShort:"Été",        cat:"anecdote", icon:"🧊", title:"Staline refuse de croire aux rapports d'invasion pendant 11 jours", detail:"Des dizaines d'agents soviétiques avaient averti Staline d'une invasion imminente. Il refusa de les croire, qualifiant les avertissements de 'provocation'. Après le début de Barbarossa, il disparut de la scène publique pendant 11 jours.", stat:"Staline absent des médias 11 jours après le début de l'invasion", wiki:"https://fr.wikipedia.org/wiki/Opération_Barbarossa" },
+  { year:1941, dateShort:"Été",        cat:"rare",     icon:"🖼️", title:"1,2 million d'objets de l'Ermitage évacués vers l'Oural en secret", detail:"Dès le début de l'invasion, des trains spéciaux évacuaient les collections de l'Ermitage vers Sverdlovsk (Iekaterinbourg). Les caisses furent chargées en 6 jours. Les salles vides restèrent ouvertes aux Leningradois pendant le siège.", stat:"1 200 000 objets déplacés en 2 convois ferroviaires", wiki:"https://fr.wikipedia.org/wiki/Musée_de_l%27Ermitage" },
+  { year:1941, dateShort:"8 sept.",    cat:"known",    icon:"🏙️", title:"Siège de Leningrad commence — 872 jours de résistance", detail:"Les forces allemandes encerclent Leningrad (Saint-Pétersbourg). Le siège durera 872 jours — le plus long de l'histoire moderne. La population survivra grâce à la 'Route de la Vie' sur le lac Ladoga gelé en hiver.", stat:"872 jours de siège, ~1 million de civils morts de faim", wiki:"https://fr.wikipedia.org/wiki/Siège_de_Leningrad" },
+  { year:1941, dateShort:"Hiver",      cat:"rare",     icon:"🌡️", title:"L'hiver russe arrête la Wehrmacht devant Moscou", detail:"En décembre 1941, l'armée allemande est à 30 km de Moscou. Mais le 'Général Hiver' s'abat sur les soldats allemands équipés pour une guerre courte. Des moteurs gelaient dans les tanks, les armes refusaient de tirer à -40°C.", stat:"Temperature descendit à -42°C, 130 000 cas de gelures allemands", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Moscou" },
+  { year:1941, dateShort:"5-6 déc.",   cat:"known",    icon:"❄️", title:"Contre-offensive soviétique devant Moscou", detail:"Joukov lance une contre-offensive massive qui repousse les Allemands de 100 à 200 km de Moscou. C'est la première grande victoire terrestre des Alliés. Le mythe de l'invincibilité allemande s'effondre.", stat:"Première défaite terrestre majeure de l'Allemagne nazie", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Moscou" },
+  { year:1941, dateShort:"7 déc.",     cat:"known",    icon:"🌊", title:"Pearl Harbor — 'une date qui vivra dans l'infamie'", detail:"353 avions japonais attaquent la flotte américaine du Pacifique en deux vagues. En 2 heures, 4 cuirassés sont coulés. Les États-Unis entrent en guerre. Le Japon avait misé sur un knock-out décisif — ce fut le début de sa fin.", stat:"2 403 Américains tués, 19 navires coulés ou endommagés", wiki:"https://fr.wikipedia.org/wiki/Attaque_de_Pearl_Harbor" },
+  { year:1941, dateShort:"8 déc.",     cat:"anecdote", icon:"🤦", title:"Hitler déclare la guerre aux États-Unis… de son propre chef", detail:"Quatre jours après Pearl Harbor, Hitler déclare la guerre aux États-Unis alors qu'il n'y était nullement obligé par ses traités avec le Japon. La plupart des historiens considèrent cette décision comme son erreur stratégique la plus inexplicable.", stat:"Sans cette décision, Roosevelt aurait eu du mal à entrer en guerre en Europe", wiki:"https://fr.wikipedia.org/wiki/Déclaration_de_guerre_de_l%27Allemagne_aux_États-Unis" },
+  { year:1941, dateShort:"Déc.",       cat:"rare",     icon:"🔑", title:"Enigma décryptée : les Alliés lisent les messages allemands", detail:"Les équipes de Bletchley Park, menées par Alan Turing, percent le code Enigma de la marine allemande. Cette percée resta secrète pendant 30 ans après la guerre. Churchill estimait qu'elle raccourcit le conflit de deux ans.", stat:"Bletchley Park employait 10 000 personnes à son apogée", wiki:"https://fr.wikipedia.org/wiki/Enigma_(machine)" },
+  { year:1941, dateShort:"Déc.",       cat:"anecdote", icon:"🏯", title:"Les Philippines envahies — MacArthur s'échappe en promettant de revenir", detail:"Après Pearl Harbor, le Japon envahit les Philippines. MacArthur, qui résiste à Corregidor, est contraint de fuir par sous-marin et avion vers l'Australie. Sa promesse 'I shall return' devient l'une des phrases les plus célèbres de la guerre.", stat:"MacArthur tint sa promesse 3 ans et demi plus tard", wiki:"https://fr.wikipedia.org/wiki/Chute_des_Philippines_(1941-1942)" },
 
-  {
-    year: 1943,
-    date: "Juillet 1943",
-    dateShort: "Juil.",
-    cat: "known",
-    icon: "🤌",
-    title: "Sicile et chute de Mussolini",
-    detail: "Les Alliés ouvrent un second front méditerranéen. Mussolini est arrêté par le Grand Conseil fasciste puis emprisonné. Il sera libéré deux mois plus tard par des parachutistes allemands dans une opération spectaculaire.",
-    stat: "38 jours pour conquérir la Sicile",
-    wiki: "https://fr.wikipedia.org/wiki/Op%C3%A9ration_Husky"
-  },
-  {
-    year: 1943,
-    date: "Été 1943",
-    dateShort: "Été",
-    cat: "anecdote",
-    icon: "🦇",
-    title: "Des chauves-souris bombes qui mirent le feu à une base américaine",
-    detail: "Les Alliés testèrent sérieusement des chauves-souris portant de petites bombes incendiaires à larguer sur les villes japonaises. Le projet coûta des millions avant d'être abandonné — notamment après qu'une chauve-souris s'échappa et incendia un hangar d'une base américaine.",
-    stat: "Projet Adams : 2 millions de dollars dépensés pour des chauves-souris",
-    wiki: "https://fr.wikipedia.org/wiki/Bat_bomb"
-  },
-  {
-    year: 1943,
-    date: "Novembre 1943",
-    dateShort: "Nov.",
-    cat: "rare",
-    icon: "🤝",
-    title: "Téhéran : trois géants, des micros soviétiques et de la paranoïa",
-    detail: "Staline, Roosevelt et Churchill se rencontrent pour la première fois tous les trois. Roosevelt, inquiet d'une menace d'attentat, dormait dans l'ambassade soviétique. Les Britanniques soupçonnèrent immédiatement les Soviétiques d'avoir posé des micros dans les chambres.",
-    stat: "Première et unique rencontre des Trois Grands en territoire neutre",
-    wiki: "https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_T%C3%A9h%C3%A9ran"
-  },
+  /* ══════════════════════════════════════════
+     1942
+  ══════════════════════════════════════════ */
+  { year:1942, dateShort:"20 janv.",   cat:"rare",     icon:"📋", title:"Wannsee : 90 minutes pour planifier le génocide de 11 millions de personnes", detail:"Quinze hauts fonctionnaires nazis se réunirent 90 minutes à Wannsee pour coordonner la 'Solution finale'. Les procès-verbaux retrouvés en 1947 montrent des hommes discutant de logistique d'extermination comme s'il s'agissait d'un projet industriel.", stat:"15 participants, 11 millions de victimes inscrites au tableau", wiki:"https://fr.wikipedia.org/wiki/Conférence_de_Wannsee" },
+  { year:1942, dateShort:"15 fév.",    cat:"known",    icon:"🇸🇬", title:"Singapour tombe — la plus grande capitulation britannique de l'histoire", detail:"85 000 soldats britanniques, australiens et indiens se rendent à 35 000 Japonais à Singapour. Churchill qualifie cela du 'pire désastre' de l'histoire militaire britannique. Les Japonais avaient avancé à vélo dans la jungle.", stat:"85 000 soldats alliés prisonniers, Churchill 'catastrophé'", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Singapour" },
+  { year:1942, dateShort:"Fév.",       cat:"anecdote", icon:"🕊️", title:"Des pigeons militaires reçoivent des médailles officielles", detail:"La marine britannique employait des milliers de pigeons voyageurs certifiés. 'Cher Ami' sauva l'équipage d'un hydravion abattu. La médaille Dickin, créée spécialement, fut attribuée à 32 pigeons pendant la guerre.", stat:"32 pigeons ont reçu la médaille Dickin pendant le conflit", wiki:"https://fr.wikipedia.org/wiki/Médaille_Dickin" },
+  { year:1942, dateShort:"Mars",       cat:"rare",     icon:"🌏", title:"La Birmanie tombe : le Japon contrôle l'Asie du Sud-Est", detail:"En 4 mois, le Japon s'empare de la Birmanie, de la Malaisie, des Indes néerlandaises (Indonésie actuelle) et des Philippines. L'empire japonais contrôle désormais une zone grande comme les États-Unis.", stat:"Zone conquise équivalente à la taille des États-Unis", wiki:"https://fr.wikipedia.org/wiki/Théâtre_d%27opérations_du_Pacifique" },
+  { year:1942, dateShort:"4-6 juin",   cat:"known",    icon:"🌊", title:"Midway — le tournant du Pacifique en 5 minutes", detail:"En 5 minutes décisives, des bombardiers américains coulent 3 porte-avions japonais. Un quatrième suivra dans la journée. Le Japon perd ses meilleurs pilotes et ne s'en remettra jamais. Le rapport de force dans le Pacifique s'inverse.", stat:"4 porte-avions japonais coulés, 3 500 marins japonais tués", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Midway" },
+  { year:1942, dateShort:"Été",        cat:"anecdote", icon:"🦇", title:"Le projet Bat Bomb : des chauves-souris bombes incendiaires", detail:"L'US Army testa sérieusement des chauves-souris portant de minuscules bombes incendiaires à larguer sur les villes japonaises. Le projet fut abandonné après qu'une chauve-souris en fuite mit le feu à une base américaine au Nouveau-Mexique.", stat:"2 millions de dollars dépensés avant l'abandon du projet", wiki:"https://fr.wikipedia.org/wiki/Bat_bomb" },
+  { year:1942, dateShort:"Juil.",      cat:"rare",     icon:"🌵", title:"El-Alamein I — Rommel stoppé à 100 km d'Alexandrie", detail:"Rommel et son Afrika Korps avancent jusqu'à El-Alamein, à seulement 100 km d'Alexandrie. En Égypte, des fonctionnaires brûlent déjà leurs archives. Montgomery parvient à stopper l'avance avec des reserves fraîches.", stat:"Rommel était à 100 km d'Alexandrie et du canal de Suez", wiki:"https://fr.wikipedia.org/wiki/Première_bataille_d%27El-Alamein" },
+  { year:1942, dateShort:"19 août",    cat:"known",    icon:"🏖️", title:"Raid de Dieppe — un désastre qui apprendra aux Alliés la leçon du D-Day", detail:"6 000 soldats, principalement canadiens, attaquent le port de Dieppe. Le raid est un désastre : 3 600 hommes tués, blessés ou capturés en 6 heures. Mais les leçons tirées seront cruciales pour la planification de Normandie.", stat:"3 623 pertes alliées en 6 heures de combat", wiki:"https://fr.wikipedia.org/wiki/Raid_de_Dieppe" },
+  { year:1942, dateShort:"23 août",    cat:"known",    icon:"🔥", title:"Bataille de Stalingrad — début de l'enfer", detail:"La 6e armée allemande entre dans Stalingrad. Ce qui devait être une victoire rapide devient une bataille de rats dans des ruines. Pendant 5 mois, les soldats se battent rue par rue, immeuble par immeuble, pièce par pièce.", stat:"~2 millions de morts en 6 mois de combat urbain", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Stalingrad" },
+  { year:1942, dateShort:"4 nov.",     cat:"known",    icon:"🌟", title:"El-Alamein II — victoire décisive de Montgomery", detail:"Montgomery contre-attaque et écrase Rommel en 10 jours. C'est le tournant en Afrique du Nord. Churchill dira : 'Ce n'est pas la fin, ce n'est pas le commencement de la fin, mais c'est peut-être la fin du commencement.'", stat:"30 000 soldats de l'Axe capturés, fin du mythe Rommel", wiki:"https://fr.wikipedia.org/wiki/Deuxième_bataille_d%27El-Alamein" },
+  { year:1942, dateShort:"8 nov.",     cat:"rare",     icon:"🌍", title:"Opération Torch : les GIs ne savaient pas où ils allaient", detail:"Lors du débarquement américain en Afrique du Nord, les ordres étaient dans des enveloppes scellées, ouvertes 36h avant l'assaut. Certains soldats pensaient attaquer Dakar, d'autres la Norvège. L'opération fut une semi-surprise pour les alliés eux-mêmes.", stat:"107 000 soldats alliés débarquèrent sans connaître leur destination", wiki:"https://fr.wikipedia.org/wiki/Opération_Torch" },
+  { year:1942, dateShort:"Hiver",      cat:"anecdote", icon:"🗡️", title:"Le couteau commando Fairbairn-Sykes : l'arme des forces spéciales", detail:"Le couteau FS, conçu par deux ex-policiers de Shanghai, devient l'arme standard des commandos britanniques. Sa forme caractéristique inspire des dizaines de films et de romans d'espionnage. Il est encore fabriqué aujourd'hui.", stat:"Le couteau FS reste en service dans les forces spéciales britanniques", wiki:"https://fr.wikipedia.org/wiki/Couteau_Fairbairn-Sykes" },
 
-  {
-    year: 1944,
-    date: "6 juin 1944",
-    dateShort: "6 juin",
-    cat: "known",
-    icon: "🛥️",
-    title: "Débarquement en Normandie — Jour J",
-    detail: "156 000 soldats alliés prennent d'assaut les plages normandes. La plus grande opération amphibie de l'histoire. La ruse de l'opération Fortitude fit croire à Hitler que le vrai débarquement aurait lieu au Pas-de-Calais, immobilisant des Panzers jusqu'au dernier moment.",
-    stat: "156 000 hommes, 11 000 avions, 5 000 navires en une nuit",
-    wiki: "https://fr.wikipedia.org/wiki/D%C3%A9barquement_de_Normandie"
-  },
-  {
-    year: 1944,
-    date: "Juin 1944",
-    dateShort: "Juin",
-    cat: "rare",
-    icon: "🎭",
-    title: "L'armée fantôme de Patton qui n'existait pas",
-    detail: "L'opération Fortitude créa une fausse armée entière (FUSAG), avec de faux chars gonflables, des transmissions radio bidon et des agents doubles. Hitler attendit des semaines avant de déplacer ses Panzers, convaincu que le Jour J était une feinte.",
-    stat: "Des milliers de faux chars en caoutchouc déployés en Angleterre",
-    wiki: "https://fr.wikipedia.org/wiki/Op%C3%A9ration_Fortitude"
-  },
-  {
-    year: 1944,
-    date: "20 juillet 1944",
-    dateShort: "20 juil.",
-    cat: "rare",
-    icon: "💣",
-    title: "La bombe de von Stauffenberg : 2 cm entre la victoire et l'échec",
-    detail: "La bombe était à 2 mètres d'Hitler mais une table en chêne massif dévia le souffle de l'explosion. Des 24 personnes présentes, 4 moururent. Hitler présenta ses blessures à Mussolini quelques heures plus tard avec une fierté morbide.",
-    stat: "4 morts, 0 dictateur — la table en chêne changea l'histoire",
-    wiki: "https://fr.wikipedia.org/wiki/Attentat_du_20_juillet_1944"
-  },
-  {
-    year: 1944,
-    date: "25 août 1944",
-    dateShort: "25 août",
-    cat: "anecdote",
-    icon: "🚗",
-    title: "Paris libéré avec des voitures à bois",
-    detail: "La libération de Paris fut menée en partie avec des véhicules fonctionnant au gazogène — un gaz produit par la combustion de bois — faute d'essence. Des taxis parisiens rejoignirent la colonne de Leclerc avec leurs propres générateurs à bois.",
-    stat: "Faute d'essence, le gazogène alimentait une partie de la 2e DB",
-    wiki: "https://fr.wikipedia.org/wiki/Lib%C3%A9ration_de_Paris"
-  },
-  {
-    year: 1944,
-    date: "Décembre 1944",
-    dateShort: "Déc.",
-    cat: "known",
-    icon: "❄️",
-    title: "Bataille des Ardennes — la dernière grande offensive",
-    detail: "Hitler lance sa dernière grande contre-offensive à l'ouest. 30 divisions allemandes percent le front américain dans les Ardennes. La résistance héroïque de Bastogne et la météo dégagée qui permit à l'aviation alliée d'intervenir renversèrent la situation.",
-    stat: "19 000 soldats américains tués — la pire perte US de la guerre",
-    wiki: "https://fr.wikipedia.org/wiki/Bataille_des_Ardennes"
-  },
+  /* ══════════════════════════════════════════
+     1943
+  ══════════════════════════════════════════ */
+  { year:1943, dateShort:"2 fév.",     cat:"known",    icon:"🏳️", title:"Stalingrad : la 6e armée capitule — tournant de la guerre", detail:"Le Feldmarschall Paulus se rend avec 91 000 survivants de sa 6e armée — dont seulement 6 000 rentreront en Allemagne après la guerre. Hitler décrète 3 jours de deuil. La Wehrmacht n'a plus l'initiative sur le front de l'Est.", stat:"91 000 prisonniers dont 24 généraux et 1 feldmarschall", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Stalingrad" },
+  { year:1943, dateShort:"Janv.",      cat:"rare",     icon:"🎩", title:"Conférence de Casablanca : Roosevelt invente la 'capitulation sans conditions'", detail:"Roosevelt et Churchill se rencontrent à Casablanca. Roosevelt déclare spontanément que les Alliés n'accepteront qu'une 'capitulation sans conditions'. Churchill est surpris. Cette formule renforcera la détermination allemande à combattre jusqu'au bout.", stat:"La formule fut prononcée lors d'une conférence de presse improvisée", wiki:"https://fr.wikipedia.org/wiki/Conférence_de_Casablanca" },
+  { year:1943, dateShort:"Mars",       cat:"rare",     icon:"⚓", title:"Bataille de l'Atlantique : les sous-marins allemands dominent les eaux", detail:"En mars 1943, les U-Boot coulèrent 108 navires alliés en un seul mois. Les convois américains perdaient 1 navire sur 5. Churchill dira plus tard que c'est la seule chose qui l'ait vraiment fait peur pendant la guerre.", stat:"108 navires alliés coulés en mars 1943 seul", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_l%27Atlantique_(1939-1945)" },
+  { year:1943, dateShort:"5 juil.",    cat:"known",    icon:"🛡️", title:"Koursk — la plus grande bataille de chars de l'histoire", detail:"Sur un front de 500 km, 6 000 chars soviétiques affrontent 3 000 chars allemands. L'offensive allemande 'Citadelle' est brisée en 8 jours. À partir de cet instant, l'Allemagne ne lance plus aucune offensive stratégique à l'Est.", stat:"6 000 chars soviétiques vs 3 000 allemands sur 500 km de front", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Koursk" },
+  { year:1943, dateShort:"10 juil.",   cat:"known",    icon:"🤌", title:"Sicile envahie — l'Italie vacille", detail:"Les Alliés débarquent en Sicile avec 160 000 hommes dans la plus grande opération amphibie avant le Jour J. En 38 jours, l'île est conquise. Mussolini sera renversé 13 jours après le débarquement.", stat:"160 000 hommes débarqués en Sicile, île conquise en 38 jours", wiki:"https://fr.wikipedia.org/wiki/Opération_Husky" },
+  { year:1943, dateShort:"25 juil.",   cat:"known",    icon:"🤌", title:"Mussolini arrêté par le Grand Conseil fasciste", detail:"Le Grand Conseil fasciste vote la destitution de Mussolini à 19 voix contre 7 après minuit. Il est arrêté à la sortie et emmené dans une ambulance militaire. Son régime de 21 ans s'effondre en une nuit.", stat:"21 ans de fascisme italiens terminés en une nuit", wiki:"https://fr.wikipedia.org/wiki/Chute_de_Mussolini" },
+  { year:1943, dateShort:"Été",        cat:"rare",     icon:"💡", title:"Le DUKW amphibie : le canard qui gagna la guerre logistique", detail:"Le 'Duck' (DUKW), véhicule amphibie américain, révolutionne la logistique alliée. Il peut passer de l'eau à la terre sans s'arrêter, ravitaillant les troupes directement des bateaux aux fronts. On en produisit 21 000.", stat:"21 000 DUKW produits, utilisés de la Sicile à la Normandie", wiki:"https://fr.wikipedia.org/wiki/DUKW" },
+  { year:1943, dateShort:"8 sept.",    cat:"known",    icon:"🇮🇹", title:"Armistice italien — l'Italie change de camp", detail:"L'Italie signe secrètement l'armistice avec les Alliés. L'annonce crée un chaos total : les soldats italiens ne savent plus pour qui combattre. L'Allemagne occupe immédiatement l'Italie du Nord.", stat:"600 000 soldats italiens capturés par les Allemands après l'armistice", wiki:"https://fr.wikipedia.org/wiki/Armistice_de_Cassibile" },
+  { year:1943, dateShort:"12 sept.",   cat:"anecdote", icon:"🦅", title:"Mussolini libéré par des parachutistes SS dans les montagnes", detail:"Un commando SS d'élite dirigé par Otto Skorzeny atterrit en planeurs sur un refuge de montagne et libère Mussolini sans tirer un seul coup de feu. L'opération, filmée en partie, devient une légende de la guerre.", stat:"12 commandos SS libèrent Mussolini sans combat", wiki:"https://fr.wikipedia.org/wiki/Opération_Quercia" },
+  { year:1943, dateShort:"Nov.",       cat:"rare",     icon:"🤝", title:"Conférence de Téhéran : trois géants sous écoute soviétique", detail:"Première rencontre des Trois Grands. Roosevelt loge dans l'ambassade soviétique — et les chambres étaient très probablement équipées de micros. Les décisions prises ici (Overlord, partage de l'Europe) façonneront l'après-guerre.", stat:"Roosevelt dormait dans l'ambassade soviétique, probablement sur écoute", wiki:"https://fr.wikipedia.org/wiki/Conférence_de_Téhéran" },
+  { year:1943, dateShort:"Hiver",      cat:"anecdote", icon:"🎄", title:"Noël en prison : les GIs créent une monnaie parallèle avec des cigarettes", detail:"Dans tous les camps de prisonniers, une économie parallèle basée sur les cigarettes américaines se développe spontanément. Une cartouche de Camel valait plus qu'une semaine de salde de soldat allemand. L'économiste Radford en fera une étude académique.", stat:"Étude économique publiée en 1945, citée encore dans les cours d'université", wiki:"https://fr.wikipedia.org/wiki/Économie_des_camps_de_prisonniers" },
 
-  {
-    year: 1945,
-    date: "4 – 11 février 1945",
-    dateShort: "Fév.",
-    cat: "rare",
-    icon: "✍️",
-    title: "Yalta : l'Europe redessinée en trois jours",
-    detail: "Churchill, Roosevelt et Staline décidèrent du sort de l'Europe d'après-guerre. Roosevelt était gravement malade (il mourut deux mois plus tard). Certains historiens estiment que son état de santé affaiblit la position américaine face à Staline.",
-    stat: "Roosevelt mourut 63 jours après Yalta",
-    wiki: "https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Yalta"
-  },
-  {
-    year: 1945,
-    date: "13 – 15 février 1945",
-    dateShort: "13–15 fév.",
-    cat: "rare",
-    icon: "🔥",
-    title: "Bombardement de Dresde — le débat qui dure encore",
-    detail: "800 bombardiers britanniques et américains rasèrent le centre historique de Dresde. Le nombre de morts (entre 22 000 et 25 000) fut longtemps manipulé par la propagande nazie qui annonça 250 000 victimes. La nécessité militaire de ce raid reste débattue.",
-    stat: "25 000 morts estimés — propagande nazie avançait 250 000",
-    wiki: "https://fr.wikipedia.org/wiki/Bombardement_de_Dresde"
-  },
-  {
-    year: 1945,
-    date: "30 avril 1945",
-    dateShort: "30 avr.",
-    cat: "known",
-    icon: "💀",
-    title: "Suicide d'Hitler dans le Führerbunker",
-    detail: "Hitler se suicide avec Eva Braun dans son bunker sous Berlin, un jour après leur mariage. Leurs corps furent brûlés dans le jardin de la Chancellerie. Les soldats soviétiques trouvèrent les restes quelques heures plus tard.",
-    stat: "Berlin capitule 8 jours après la mort d'Hitler",
-    wiki: "https://fr.wikipedia.org/wiki/Mort_d%27Adolf_Hitler"
-  },
-  {
-    year: 1945,
-    date: "Avril – Mai 1945",
-    dateShort: "Avr.–Mai",
-    cat: "anecdote",
-    icon: "🌿",
-    title: "Hiroo Onoda : 29 ans de guerre sans le savoir",
-    detail: "Officier japonais aux Philippines, Hiroo Onoda continua sa guérilla jusqu'en 1974 — 29 ans après la capitulation — car personne ne l'avait informé. Son supérieur hiérarchique dut venir en personne lui ordonner de rendre les armes.",
-    stat: "Onoda combattit jusqu'en mars 1974, soit 29 ans après la fin",
-    wiki: "https://fr.wikipedia.org/wiki/Hiroo_Onoda"
-  },
-  {
-    year: 1945,
-    date: "6 et 9 août 1945",
-    dateShort: "6 & 9 août",
-    cat: "known",
-    icon: "☢️",
-    title: "Hiroshima et Nagasaki — les bombes atomiques",
-    detail: "« Little Boy » (6 août) et « Fat Man » (9 août) font entre 130 000 et 226 000 morts, principalement civils. C'est à ce jour la seule utilisation militaire d'armes nucléaires de l'histoire humaine.",
-    stat: "200 000 morts · seule utilisation militaire du nucléaire à ce jour",
-    wiki: "https://fr.wikipedia.org/wiki/Bombardements_atomiques_d%27Hiroshima_et_Nagasaki"
-  },
-  {
-    year: 1945,
-    date: "2 septembre 1945",
-    dateShort: "2 sept.",
-    cat: "known",
-    icon: "🕊️",
-    title: "Capitulation japonaise — fin officielle",
-    detail: "Sur le pont du cuirassé USS Missouri, le Japon signe la reddition. La cérémonie dure 23 minutes. La Seconde Guerre Mondiale est officiellement terminée — 6 ans et 1 jour après l'invasion de la Pologne.",
-    stat: "6 ans, 1 jour, ~70 à 85 millions de morts",
-    wiki: "https://fr.wikipedia.org/wiki/Capitulation_du_Japon"
-  },
-  {
-    year: 1945,
-    date: "Après 1945",
-    dateShort: "Après",
-    cat: "rare",
-    icon: "🐀",
-    title: "Les nazis fuient via les « ratlines » — avec complicité vaticane ?",
-    detail: "Des milliers de criminels de guerre nazis fuirent vers l'Amérique du Sud via des réseaux clandestins, en passant par l'Italie avec de faux passeports. Des documents déclassifiés suggèrent que des agents du Vatican facilitèrent certains passages.",
-    stat: "Adolf Eichmann, Josef Mengele… des centaines de criminels s'échappèrent",
-    wiki: "https://fr.wikipedia.org/wiki/Fili%C3%A8res_d%27%C3%A9vasion_nazis"
-  }
+  /* ══════════════════════════════════════════
+     1944
+  ══════════════════════════════════════════ */
+  { year:1944, dateShort:"Janv.",      cat:"rare",     icon:"🏔️", title:"Monte Cassino — 4 batailles pour un monastère", detail:"La forteresse naturelle de Monte Cassino bloque l'avance alliée vers Rome. Les Alliés lancent 4 batailles successives. Le bombardement du monastère du Ve siècle par les Alliés reste controversé.", stat:"4 batailles, 55 000 pertes alliées pour franchir une ligne défensive", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Monte_Cassino" },
+  { year:1944, dateShort:"27 janv.",   cat:"known",    icon:"🏙️", title:"Le siège de Leningrad levé après 872 jours", detail:"L'Armée rouge brise enfin l'encerclement de Leningrad. La ville a survécu à 872 jours de siège, au prix d'environ un million de civils morts de faim, de froid et de bombardements.", stat:"872 jours, 1 million de civils morts, ville jamais rendue", wiki:"https://fr.wikipedia.org/wiki/Siège_de_Leningrad" },
+  { year:1944, dateShort:"Fév.",       cat:"rare",     icon:"🎭", title:"Opération Fortitude : 1 000 faux chars en caoutchouc trompent Hitler", detail:"L'opération Fortitude créa une fausse armée entière (FUSAG), avec des milliers de faux chars gonflables en caoutchouc, de fausses transmissions radio et des agents doubles. Hitler attendit des semaines pour déplacer ses Panzers.", stat:"Des milliers de faux chars en caoutchouc déployés en Angleterre du Sud", wiki:"https://fr.wikipedia.org/wiki/Opération_Fortitude" },
+  { year:1944, dateShort:"6 juin",     cat:"known",    icon:"🛥️", title:"Jour J — 156 000 hommes, 5 000 navires, 11 000 avions", detail:"L'opération Overlord est lancée sur 5 plages normandes. 156 000 soldats débarquent le premier jour. C'est la plus grande opération amphibie de l'histoire. La ruse Fortitude a tenu : Hitler croit toujours à un faux débarquement.", stat:"156 000 hommes, 11 000 avions, 5 000 navires en une nuit", wiki:"https://fr.wikipedia.org/wiki/Débarquement_de_Normandie" },
+  { year:1944, dateShort:"6 juin",     cat:"anecdote", icon:"🪖", title:"Le mannequin parachutiste qui sauva des vies à Normandie", detail:"Les Alliés larguèrent des centaines de mannequins de paille avec des parachutes sur des zones leurres pour tromper les Allemands la nuit du Débarquement. Ces 'Ruperts' créèrent la confusion et attirèrent des troupes loin des vraies zones.", stat:"Des centaines de mannequins 'Rupert' largués pour distraire les Allemands", wiki:"https://fr.wikipedia.org/wiki/Débarquement_de_Normandie" },
+  { year:1944, dateShort:"13 juin",    cat:"known",    icon:"🚀", title:"V-1 : Londres sous les bombes volantes", detail:"La première bombe volante V-1 tombe sur Londres le 13 juin. Ces missiles de croisière avant l'heure terrorisent la population. 10 500 V-1 seront lancés sur l'Angleterre, dont 4 000 atteindront leur cible.", stat:"10 500 V-1 lancés, ~6 200 civils britanniques tués", wiki:"https://fr.wikipedia.org/wiki/V1_(arme)" },
+  { year:1944, dateShort:"20 juil.",   cat:"rare",     icon:"💣", title:"Attentat du 20 juillet : une table en chêne sauve Hitler", detail:"La bombe de von Stauffenberg était à 2 mètres d'Hitler, mais une table massive en chêne dévia l'essentiel du souffle. 4 personnes moururent sur 24 présentes. Hitler, légèrement blessé, présenta ses blessures à Mussolini quelques heures plus tard.", stat:"4 morts sur 24 présents — la table en chêne changea l'histoire", wiki:"https://fr.wikipedia.org/wiki/Attentat_du_20_juillet_1944" },
+  { year:1944, dateShort:"1 août",     cat:"rare",     icon:"🏴", title:"Insurrection de Varsovie — 63 jours de combat héroïque et trahi", detail:"La résistance polonaise se soulève contre l'occupant allemand alors que l'Armée rouge est à quelques kilomètres. Staline ordonne l'arrêt de son avance et refuse de laisser les Alliés ravitailler Varsovie par avion. 200 000 civils meurent.", stat:"200 000 civils tués, Varsovie détruite à 85% sur ordre d'Hitler", wiki:"https://fr.wikipedia.org/wiki/Insurrection_de_Varsovie" },
+  { year:1944, dateShort:"25 août",    cat:"anecdote", icon:"🚗", title:"Paris libéré avec des véhicules à gazogène et des taxis", detail:"La libération de Paris fut menée en partie avec des véhicules fonctionnant au gazogène — gaz produit par combustion de bois — faute d'essence. Des taxis parisiens rejoignirent la colonne de Leclerc avec leurs générateurs à bois.", stat:"La 2e DB de Leclerc utilisait des centaines de véhicules au gazogène", wiki:"https://fr.wikipedia.org/wiki/Libération_de_Paris" },
+  { year:1944, dateShort:"2 sept.",    cat:"rare",     icon:"🔬", title:"Les V-2 : premières fusées à atteindre l'espace (et Londres)", detail:"La première V-2 tombe sur Paris le 8 septembre et sur Londres le 8 septembre 1944. Ces missiles balistiques, ancêtres des fusées modernes, volaient à 5 000 km/h et à 80 km d'altitude, hors de portée de tout intercepteur.", stat:"V-2 : première fusée à atteindre l'espace (80 km d'altitude)", wiki:"https://fr.wikipedia.org/wiki/V2_(fusée)" },
+  { year:1944, dateShort:"17 sept.",   cat:"rare",     icon:"🪂", title:"Opération Market Garden — un pont de trop", detail:"La plus grande opération aéroportée de l'histoire : 35 000 parachutistes sautent pour s'emparer de ponts néerlandais. À Arnhem, les Britanniques tiennent 9 jours contre 2 divisions SS. L'opération échoue de justesse.", stat:"35 000 parachutistes, 17 000 pertes alliées, échec de justesse", wiki:"https://fr.wikipedia.org/wiki/Opération_Market_Garden" },
+  { year:1944, dateShort:"Déc.",       cat:"known",    icon:"❄️", title:"Bataille des Ardennes — la dernière grande offensive allemande", detail:"Hitler lance 30 divisions allemandes à travers les Ardennes. Les Américains sont surpris et repoussés. La résistance de Bastogne ('Nuts!') et le dégagement du ciel permettent à Patton de renverser la situation en 10 jours.", stat:"19 000 soldats américains tués — la pire perte US de la guerre", wiki:"https://fr.wikipedia.org/wiki/Bataille_des_Ardennes" },
+  { year:1944, dateShort:"Oct.",       cat:"anecdote", icon:"📊", title:"L'accord des pourcentages : Churchill dessine l'Europe d'après-guerre sur un bout de papier", detail:"Churchill et Staline se retrouvent à Moscou. Churchill écrit sur une feuille : Roumanie 90% soviétique, Grèce 90% britannique... Staline coche la liste. En quelques minutes, le destin de millions de personnes est réglé.", stat:"L'Europe de l'Est divisée en 5 minutes sur une feuille de papier", wiki:"https://fr.wikipedia.org/wiki/Accord_des_pourcentages" },
+  { year:1944, dateShort:"Été",        cat:"rare",     icon:"💻", title:"Colossus : le premier ordinateur électronique programmable", detail:"À Bletchley Park, les ingénieurs britanniques construisent Colossus pour décrypter les messages Lorenz de la Wehrmacht. C'est le premier ordinateur électronique programmable de l'histoire. Son existence resta secrète jusqu'en 1975.", stat:"Premier ordinateur électronique programmable, secret jusqu'en 1975", wiki:"https://fr.wikipedia.org/wiki/Colossus_(ordinateur)" },
+  { year:1944, dateShort:"Juin",       cat:"known",    icon:"🌏", title:"Bataille des Philippines — la plus grande bataille navale de l'histoire", detail:"La bataille de la mer des Philippines engage 2 flottes géantes. La 'Grande Chasse aux Dindons de la Mariannes' voit 476 avions japonais détruits en 2 jours. La domination aérienne japonaise dans le Pacifique est terminée.", stat:"476 avions japonais détruits en 2 jours de combat aérien", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_la_mer_des_Philippines" },
+
+  /* ══════════════════════════════════════════
+     1945
+  ══════════════════════════════════════════ */
+  { year:1945, dateShort:"4-11 fév.",  cat:"rare",     icon:"✍️", title:"Yalta : l'Europe redessinée en 8 jours par des hommes malades", detail:"Churchill, Roosevelt et Staline décident du sort de l'Europe. Roosevelt était visiblement malade (il mourra 63 jours plus tard). Certains historiens estiment que son état affaiblit la position américaine face à un Staline en pleine forme.", stat:"Roosevelt mourut 63 jours après Yalta", wiki:"https://fr.wikipedia.org/wiki/Conférence_de_Yalta" },
+  { year:1945, dateShort:"13 fév.",    cat:"rare",     icon:"🔥", title:"Bombardement de Dresde — le débat historique qui dure encore", detail:"800 bombardiers britaniques et américains rasèrent le centre de Dresde en deux nuits. La propagande nazie annonça 250 000 morts pour provoquer l'indignation mondiale. Les historiens estiment 25 000 victimes. La nécessité militaire reste débattue.", stat:"25 000 morts (estimés) — propagande nazie avançait 250 000", wiki:"https://fr.wikipedia.org/wiki/Bombardement_de_Dresde" },
+  { year:1945, dateShort:"19 fév.",    cat:"known",    icon:"🚩", title:"Iwo Jima — 36 jours pour une île volcanique de 21 km²", detail:"Les marines américains s'emparent de l'île volcanique d'Iwo Jima après 36 jours de combats acharnés dans des tunnels et des fortifications souterraines. La photo de soldats plantant le drapeau américain devient l'icône de la guerre du Pacifique.", stat:"6 821 marines tués pour 21 km² de cendres volcaniques", wiki:"https://fr.wikipedia.org/wiki/Bataille_d%27Iwo_Jima" },
+  { year:1945, dateShort:"7 mars",     cat:"rare",     icon:"🌉", title:"Le pont de Remagen — capturé intact par accident", detail:"Des soldats américains découvrent que le pont de Ludendorff sur le Rhin est encore debout. En quelques minutes, ils s'en emparent avant que les Allemands ne le fassent exploser. C'est la première traversée du Rhin en 140 ans.", stat:"Première traversée du Rhin en 140 ans (depuis Napoléon)", wiki:"https://fr.wikipedia.org/wiki/Pont_de_Remagen" },
+  { year:1945, dateShort:"1 avr.",     cat:"known",    icon:"🌏", title:"Okinawa — la bataille la plus meurtrière du Pacifique", detail:"82 jours de combat pour prendre Okinawa, la dernière grande île avant le Japon continental. 12 000 soldats américains morts, 110 000 Japonais, et jusqu'à 150 000 civils d'Okinawa. Cette bataille poussa Roosevelt puis Truman vers la bombe atomique.", stat:"12 000 Américains, 110 000 Japonais, 150 000 civils d'Okinawa morts", wiki:"https://fr.wikipedia.org/wiki/Bataille_d%27Okinawa" },
+  { year:1945, dateShort:"12 avr.",    cat:"known",    icon:"💀", title:"Mort de Roosevelt — Truman découvre la bombe atomique", detail:"Roosevelt meurt d'une hémorragie cérébrale. Truman apprend l'existence du projet Manhattan — il n'en savait rien en tant que vice-président. Il devra décider en quelques mois si oui ou non utiliser la bombe atomique.", stat:"Truman ignorait l'existence de la bombe atomique jusqu'à ce jour", wiki:"https://fr.wikipedia.org/wiki/Franklin_Delano_Roosevelt" },
+  { year:1945, dateShort:"16 avr.",    cat:"known",    icon:"🏙️", title:"Bataille de Berlin — 2,5 millions de soldats soviétiques convergent", detail:"Joukov et Koniev lancent 2,5 millions de soldats sur Berlin. La ville est défendue par des adolescents de la Hitlerjugend et des vieillards du Volkssturm. 360 000 soldats soviétiques mourront pour conquérir la capitale du Reich.", stat:"360 000 soldats soviétiques tués pour prendre Berlin", wiki:"https://fr.wikipedia.org/wiki/Bataille_de_Berlin" },
+  { year:1945, dateShort:"28 avr.",    cat:"known",    icon:"🤌", title:"Mussolini exécuté et pendu la tête en bas à Milan", detail:"Mussolini tente de fuir en Suisse déguisé en soldat allemand. Il est reconnu par des partisans, fusillé avec sa maîtresse, et leur corps sont exposés tête en bas sur une station service de Milan devant une foule en colère.", stat:"Corps exposés tête en bas à la station service Esso de Milan", wiki:"https://fr.wikipedia.org/wiki/Mort_de_Benito_Mussolini" },
+  { year:1945, dateShort:"30 avr.",    cat:"known",    icon:"💀", title:"Suicide d'Hitler dans le Führerbunker à 15h30", detail:"Hitler se suicide avec Eva Braun dans son bunker sous Berlin, un jour après leur mariage. Il prend du cyanure et se tire une balle dans la tête. Les corps sont brûlés dans le jardin de la Chancellerie selon ses dernières instructions.", stat:"Berlin capitule 8 jours après la mort d'Hitler", wiki:"https://fr.wikipedia.org/wiki/Mort_d%27Adolf_Hitler" },
+  { year:1945, dateShort:"8 mai",      cat:"known",    icon:"🎊", title:"Capitulation allemande — VE Day, la paix en Europe", detail:"L'Allemagne signe sa capitulation inconditionnelle dans la nuit du 8 au 9 mai. L'Europe fête la victoire dans des scènes de liesse inégalées. Mais en Asie, la guerre continue. Et 6 millions de Juifs ne sont pas là pour célébrer.", stat:"6 ans de guerre en Europe, officiellement terminée", wiki:"https://fr.wikipedia.org/wiki/Capitulation_de_l%27Allemagne" },
+  { year:1945, dateShort:"16 juil.",   cat:"known",    icon:"☢️", title:"Trinity — premier test nucléaire de l'histoire dans le désert du Nouveau-Mexique", detail:"À 5h29 du matin, dans le désert du Nouveau-Mexique, la première bombe atomique est détonée. Oppenheimer murmure une phrase de la Bhagavad Gita : 'Je suis devenu la Mort, le destructeur des mondes.' Le monde a changé.", stat:"Équivalent à 21 kilotonnes de TNT, cratère de 75 mètres de diamètre", wiki:"https://fr.wikipedia.org/wiki/Trinity_(essai_nucléaire)" },
+  { year:1945, dateShort:"6 août",     cat:"known",    icon:"☢️", title:"Hiroshima — 'Little Boy' anéantit une ville en 43 secondes", detail:"Le bombardier Enola Gay largue 'Little Boy' sur Hiroshima à 8h15. L'explosion anéantit 5 km² de la ville en secondes. Entre 70 000 et 80 000 personnes meurent instantanément. Des milliers mourront dans les années suivantes de cancers.", stat:"70 000 morts instantanés, ~140 000 en fin 1945", wiki:"https://fr.wikipedia.org/wiki/Bombardement_atomique_d%27Hiroshima" },
+  { year:1945, dateShort:"8 août",     cat:"rare",     icon:"☭",  title:"L'URSS déclare la guerre au Japon — en respectant la parole donnée à Yalta", detail:"À exactement minuit, l'URSS déclare la guerre au Japon, 3 mois après la capitulation allemande comme promis à Yalta. 1,6 million de soldats soviétiques envahissent la Mandchourie en 11 jours. Le Japon est pris en étau.", stat:"1,6 million de soldats soviétiques, Mandchourie conquise en 11 jours", wiki:"https://fr.wikipedia.org/wiki/Guerre_soviéto-japonaise" },
+  { year:1945, dateShort:"9 août",     cat:"known",    icon:"☢️", title:"Nagasaki — 'Fat Man' frappe la ville secondaire par erreur de météo", detail:"La cible principale était Kokura, mais des nuages épais couvrent la ville. Le bombardier se déroute vers Nagasaki. 'Fat Man', plus puissante, tue entre 40 000 et 70 000 personnes. La géographie de Nagasaki limite les dégâts.", stat:"40 000 à 70 000 morts — Nagasaki n'était pas la cible principale", wiki:"https://fr.wikipedia.org/wiki/Bombardement_atomique_de_Nagasaki" },
+  { year:1945, dateShort:"15 août",    cat:"known",    icon:"📻", title:"Hirohito parle pour la première fois à la radio — l'armée refuse de capitituler", detail:"L'Empereur Hirohito annonce la capitulation dans un discours radiodiffusé en japonais classique que la plupart des Japonais ne comprennent pas. Un groupe d'officiers tente un coup d'État pour voler les enregistrements et continuer la guerre.", stat:"Première fois que les Japonais entendaient la voix de leur Empereur", wiki:"https://fr.wikipedia.org/wiki/Capitulation_du_Japon" },
+  { year:1945, dateShort:"2 sept.",    cat:"known",    icon:"✍️", title:"Capitulation japonaise sur l'USS Missouri — 23 minutes pour finir la guerre", detail:"Sur le pont du cuirassé USS Missouri dans la baie de Tokyo, le Japon signe la capitulation. La cérémonie dure 23 minutes. La Seconde Guerre Mondiale est officiellement terminée — 6 ans et 1 jour après l'invasion de la Pologne.", stat:"6 ans, 1 jour, ~80 millions de morts", wiki:"https://fr.wikipedia.org/wiki/Capitulation_du_Japon" },
+  { year:1945, dateShort:"Avr.–Mai",   cat:"anecdote", icon:"🌿", title:"Hiroo Onoda : 29 ans de guerre sans le savoir", detail:"Officier japonais aux Philippines, Hiroo Onoda continua sa guérilla jusqu'en mars 1974 car personne ne l'avait informé. Son ancien supérieur dut venir en personne depuis le Japon pour lui donner l'ordre officiel de rendre les armes.", stat:"Onoda combattit jusqu'en mars 1974 — 29 ans après la fin", wiki:"https://fr.wikipedia.org/wiki/Hiroo_Onoda" },
+  { year:1945, dateShort:"Après",      cat:"rare",     icon:"🐀", title:"Les 'ratlines' : des milliers de nazis fuient vers l'Amérique du Sud", detail:"Des milliers de criminels de guerre nazis fuient via des réseaux clandestins, souvent par l'Italie, avec des passeports du CICR ou du Vatican. Adolf Eichmann, Josef Mengele, Klaus Barbie — tous passent par ces filières.", stat:"Eichmann capturé à Buenos Aires en 1960 par le Mossad", wiki:"https://fr.wikipedia.org/wiki/Filières_d%27évasion_nazis" },
+  { year:1945, dateShort:"Nov.",       cat:"known",    icon:"⚖️", title:"Procès de Nuremberg — juger des crimes sans précédent", detail:"21 dirigeants nazis sont jugés pour crimes contre l'humanité, crimes de guerre et crimes contre la paix. Le procès crée le droit international moderne et le concept de 'crime contre l'humanité'. 12 sont condamnés à mort.", stat:"12 condamnations à mort, fondation du droit international moderne", wiki:"https://fr.wikipedia.org/wiki/Procès_de_Nuremberg" },
+
+  /* ══════════════════════════════════════════
+     THÈMES TRANSVERSAUX / COULISSES
+  ══════════════════════════════════════════ */
+  { year:1940, dateShort:"Continu",    cat:"rare",     icon:"🔐", title:"Bletchley Park : 10 000 personnes gardent le secret le mieux gardé de la guerre", detail:"Plus de 10 000 personnes travaillaient à Bletchley Park. Tous signaient un acte de secret absolu et n'en parlèrent à personne — y compris leurs conjoints — pendant 30 ans après la guerre. Pas un seul ne parla.", stat:"0 fuites en 30 ans parmi 10 000 personnes — secret tenu parfaitement", wiki:"https://fr.wikipedia.org/wiki/Bletchley_Park" },
+  { year:1942, dateShort:"Continu",    cat:"anecdote", icon:"🎨", title:"Hollywood en guerre — les studios américains produisent des films de propagande", detail:"Disney, Warner, MGM — tous les studios produisirent des films de propagande commandés par le gouvernement américain. Walt Disney dessina des courts-métrages montrant Donald Duck payant ses impôts pour financer la guerre.", stat:"Disney réalisa 'The New Spirit' sur ordre de Washington en 1942", wiki:"https://fr.wikipedia.org/wiki/Propagande_américaine_pendant_la_Seconde_Guerre_mondiale" },
+  { year:1941, dateShort:"Continu",    cat:"rare",     icon:"🏭", title:"Rosie the Riveter — les femmes envahissent les usines d'armement", detail:"Avec 12 millions d'hommes partis au front, les femmes américaines prirent massivement les postes dans les usines d'armement. 'Rosie the Riveter' devint le symbole de cette révolution silencieuse qui transforma durablement la société américaine.", stat:"6 millions de femmes intègrent le marché du travail industriel aux USA", wiki:"https://fr.wikipedia.org/wiki/Rosie_the_Riveter" },
+  { year:1942, dateShort:"Continu",    cat:"rare",     icon:"📬", title:"Les 'Code Talkers' Navajo : un code que les Japonais ne purent jamais casser", detail:"L'armée américaine recruta des soldats Navajo pour transmettre les communications en utilisant leur langue — inconnue en dehors de leur territoire et impossible à mémoriser pour un étranger. Les Japonais ne cassèrent jamais le code.", stat:"420 Code Talkers Navajo — code jamais brisé", wiki:"https://fr.wikipedia.org/wiki/Chiffreurs_navajos" },
+  { year:1943, dateShort:"Continu",    cat:"anecdote", icon:"🍫", title:"Le chocolat militaire américain : conçu pour être 'à peine meilleur que rien'", detail:"La barre D-ration conçue pour les GIs devait être 'à peine plus agréable qu'une barre de paraffine' selon les spécifications militaires. Trop bonne, les soldats auraient tendance à la manger immédiatement plutôt qu'en urgence.", stat:"Barre D-ration : 600 calories, spécifiée 'à peine meilleure que la cire'", wiki:"https://fr.wikipedia.org/wiki/Ration_militaire" },
+  { year:1944, dateShort:"Continu",    cat:"rare",     icon:"✊", title:"La résistance française — bien plus qu'une légende", detail:"La résistance française regroupait environ 400 000 membres actifs à sa pointe en 1944, toutes tendances politiques confondues. Leurs actions de sabotage ralentirent de 2 semaines le déplacement des divisions allemandes vers la Normandie.", stat:"400 000 résistants actifs, sabotages décisifs après le D-Day", wiki:"https://fr.wikipedia.org/wiki/Résistance_intérieure_française" },
+  { year:1939, dateShort:"Continu",    cat:"known",    icon:"✡️", title:"La Shoah — l'industrialisation du meurtre de masse", detail:"Six millions de Juifs européens furent systématiquement assassinés dans des camps d'extermination, par des Einsatzgruppen mobiles et par des conditions inhumaines. Les camps d'Auschwitz, Treblinka, Sobibor devinrent des usines de mort.", stat:"6 millions de Juifs assassinés, 2/3 de la population juive européenne", wiki:"https://fr.wikipedia.org/wiki/Shoah" },
+  { year:1944, dateShort:"Continu",    cat:"rare",     icon:"👩", title:"Les Night Witches : des pilotes femmes soviétiques terrorisent les Allemands", detail:"Le 588e régiment aérien soviétique, composé uniquement de femmes, effectua plus de 30 000 missions de bombardement nocturnes. Les Allemands les surnommèrent 'Nachtexen' (sorcières de la nuit). Chacune d'elles était jugée vaillante au combat.", stat:"30 000 missions nocturnes, toutes pilotées par des femmes soviétiques", wiki:"https://fr.wikipedia.org/wiki/Régiment_d%27aviation_de_nuit_soviétique_588e" },
+  { year:1943, dateShort:"Continu",    cat:"anecdote", icon:"🎺", title:"Glen Miller disparu au-dessus de la Manche en jouant pour les soldats", detail:"Le chef d'orchestre Glenn Miller, qui avait renoncé à sa célébrité pour jouer pour les troupes, disparut le 15 décembre 1944 lors d'un vol entre l'Angleterre et Paris. Son avion ne fut jamais retrouvé.", stat:"Glenn Miller : 35 millions de disques vendus, disparu à 40 ans", wiki:"https://fr.wikipedia.org/wiki/Glenn_Miller" },
+  { year:1945, dateShort:"Continu",    cat:"rare",     icon:"🏗️", title:"Le plan Marshall — reconstruire l'Europe pour éviter un nouvel Hitler", detail:"En 1948, les États-Unis proposent 13 milliards de dollars pour reconstruire l'Europe occidentale. La leçon du Traité de Versailles (1919) avait été retenue : une Europe humiliée et appauvrie avait engendré Hitler. Cette fois, on reconstruirait.", stat:"13 milliards de dollars (120 milliards actuels) pour reconstruire l'Europe", wiki:"https://fr.wikipedia.org/wiki/Plan_Marshall" }
+
 ];
 
 const YEARS = [...new Set(EVENTS.map(e => e.year))].sort((a, b) => a - b);
