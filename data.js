@@ -1,5 +1,21 @@
 const EVENTS = [
 
+
+
+  /* ══════════════════════════════════════════
+     1937
+  ══════════════════════════════════════════ */
+  { year:1937, dateShort:"7 juil.",    cat:"known",    icon:"🌏", title:"Incident du pont Marco Polo — début de la guerre sino-japonaise", detail:"Un incident mineur entre troupes japonaises et chinoises près de Pékin déclenche une invasion à grande échelle. C'est le début réel de la Seconde Guerre mondiale en Asie, deux ans avant l'Europe.", stat:"Plus de 10 millions de victimes chinoises au total sur 8 ans", wiki:"https://fr.wikipedia.org/wiki/Incident_du_pont_Marco_Polo" },
+  { year:1937, dateShort:"13 déc.",    cat:"known",    icon:"🩸", title:"Massacre de Nankin par l'armée impériale japonaise", detail:"Après la chute de Nankin, les troupes japonaises se livrent à un massacre systématique de civils et de soldats désarmés. Le bilan humain est effroyable, un traumatisme qui marque encore les relations sino-japonaises.", stat:"Estimations de 200 000 à 300 000 morts", wiki:"https://fr.wikipedia.org/wiki/Massacre_de_Nankin" },
+
+  /* ══════════════════════════════════════════
+     1938
+  ══════════════════════════════════════════ */
+  { year:1938, dateShort:"12 mars",    cat:"known",    icon:"🇦🇹", title:"Anschluss — l'annexion de l'Autriche", detail:"Les troupes allemandes entrent en Autriche. Hitler réalise son rêve d'unir les peuples germaniques. La population autrichienne, largement acquise à la cause, accueille la Wehrmacht avec enthousiasme.", stat:"Annexion sans combat, légitimée par un plébiscite contrôlé", wiki:"https://fr.wikipedia.org/wiki/Anschluss" },
+  { year:1938, dateShort:"30 sept.",   cat:"known",    icon:"✍️", title:"Accords de Munich — le pari perdu de la paix", detail:"Hitler, Mussolini, Chamberlain et Daladier signent un accord cédant les Sudètes (Tchécoslovaquie) à l'Allemagne. Chamberlain rentre à Londres en brandissant le papier : 'La paix pour notre temps'. Churchill, lucide, déclare : 'Vous avez choisi le déshonneur, vous aurez la guerre'.", stat:"Tchécoslovaquie sacrifiée pour éviter un conflit immédiat", wiki:"https://fr.wikipedia.org/wiki/Accords_de_Munich" },
+  { year:1938, dateShort:"9 nov.",     cat:"known",    icon:"🔥", title:"La Nuit de Cristal — le basculement vers la violence d'État", detail:"Un pogrom national organisé par les nazis contre les Juifs en Allemagne et en Autriche. Des milliers de synagogues sont brûlées, des magasins pillés, 30 000 hommes arrêtés. La persécution passe d'une exclusion légale à une violence physique directe.", stat:"91 morts immédiats, 30 000 déportés en camp de concentration", wiki:"https://fr.wikipedia.org/wiki/Nuit_de_Cristal" }
+  
+
   /* ══════════════════════════════════════════
      1939
   ══════════════════════════════════════════ */
