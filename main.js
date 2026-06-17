@@ -83,6 +83,14 @@ function buildCard(ev) {
     const isOpen = card.classList.toggle('is-open');
     card.setAttribute('aria-expanded', String(isOpen));
     card.querySelector('.card-expand').classList.toggle('open', isOpen);
+    if (isOpen) {
+      document.querySelectorAll('.event-card.is-open').forEach(other => {
+        if (other === card) return;
+        other.classList.remove('is-open');
+        other.setAttribute('aria-expanded', 'false');
+        other.querySelector('.card-expand').classList.remove('open');
+      });
+    }
   });
   return card;
 }
