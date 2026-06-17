@@ -83,6 +83,9 @@ function buildCard(ev) {
     const isOpen = card.classList.toggle('is-open');
     card.setAttribute('aria-expanded', String(isOpen));
     card.querySelector('.card-expand').classList.toggle('open', isOpen);
+
+    /* FERMER TOUS LES EVENEMENTS OUVERTS SI UN EVENEMENT EST OUVERT */
+    /*
     if (isOpen) {
       document.querySelectorAll('.event-card.is-open').forEach(other => {
         if (other === card) return;
@@ -91,6 +94,9 @@ function buildCard(ev) {
         other.querySelector('.card-expand').classList.remove('open');
       });
     }
+    */
+
+    
   });
   return card;
 }
